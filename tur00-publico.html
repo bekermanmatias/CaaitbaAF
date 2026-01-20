@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TUR.00 · Acceso Público - Turnos Online</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #e5e7eb; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <div class="min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="border-b border-slate-200 bg-white/90 backdrop-blur">
+        <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-xl bg-blue-700 text-white flex items-center justify-center font-semibold shadow-sm">
+              CA
+            </div>
+            <div class="leading-tight">
+              <p class="text-sm font-semibold">Caaitba</p>
+              <p class="text-xs text-slate-500">Sistema de Turnos Online</p>
+            </div>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 text-[11px] text-slate-500">
+            <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-3 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Vista de Prototipo
+            </span>
+          </div>
+        </div>
+
+        <!-- Tabs internas -->
+        <nav class="border-t border-slate-200 bg-white">
+          <div class="max-w-5xl mx-auto px-5 flex flex-wrap gap-2">
+            <button
+              class="tab-btn border-b-2 border-blue-600 text-blue-600 px-3 py-3 text-sm font-semibold"
+              data-target="view-landing"
+            >
+              UI.TUR.00 · Landing
+            </button>
+            <button
+              class="tab-btn border-b-2 border-transparent text-slate-500 px-3 py-3 text-sm font-semibold hover:text-slate-700"
+              data-target="view-datos-invitado"
+            >
+              UI.TUR.04b · Datos Invitado
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Contenido -->
+      <main class="flex-1">
+        <div class="max-w-5xl mx-auto px-5 py-8 space-y-8">
+          <!-- VISTA 1: Landing (UI.TUR.00) -->
+          <section id="view-landing" class="tab-view space-y-6">
+            <div class="text-center space-y-3">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                UI.TUR.00 · Acceso Público
+              </p>
+              <h1 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+                Turnos Online - Caaitba
+              </h1>
+              <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
+                Elegí cómo querés ingresar para gestionar tu turno. Podés entrar con tu usuario de afiliado
+                o continuar como invitado completando tus datos básicos.
+              </p>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Tarjeta Izquierda: Soy Afiliado -->
+              <article class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 flex flex-col">
+                <div class="flex items-center gap-3">
+                  <div class="h-11 w-11 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <div>
+                    <h2 class="text-base font-semibold text-slate-900">Soy Afiliado</h2>
+                    <p class="text-xs text-slate-500">
+                      Ingresá con tu usuario y contraseña para ver tus turnos y autogestionarlos.
+                    </p>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-1.5 text-xs text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <span class="mt-0.5 text-emerald-500">
+                      <i class="fa-solid fa-check-circle"></i>
+                    </span>
+                    <span>Acceso a historial completo de turnos.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="mt-0.5 text-emerald-500">
+                      <i class="fa-solid fa-check-circle"></i>
+                    </span>
+                    <span>Reprogramar o cancelar tus turnos vigentes.</span>
+                  </li>
+                </ul>
+
+                <div class="mt-5">
+                  <button
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                  >
+                    <i class="fa-solid fa-right-to-bracket text-xs"></i>
+                    Ingresar
+                  </button>
+                  <p class="mt-2 text-[11px] text-slate-500 text-center">
+                    Si olvidaste tu contraseña, podés recuperarla desde la opción “Olvidé mi clave”.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Tarjeta Derecha: Invitado -->
+              <article class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 flex flex-col">
+                <div class="flex items-center gap-3">
+                  <div class="h-11 w-11 rounded-xl bg-slate-800 text-white flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-pen"></i>
+                  </div>
+                  <div>
+                    <h2 class="text-base font-semibold text-slate-900">No tengo usuario</h2>
+                    <p class="text-xs text-slate-500">
+                      Podés sacar un turno rápido como invitado, completando sólo tus datos de contacto.
+                    </p>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-1.5 text-xs text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <span class="mt-0.5 text-amber-500">
+                      <i class="fa-solid fa-circle-info"></i>
+                    </span>
+                    <span>Recibirás la confirmación del turno por mail y/o WhatsApp.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="mt-0.5 text-amber-500">
+                      <i class="fa-solid fa-circle-info"></i>
+                    </span>
+                    <span>Más adelante podrás vincularlo a tu usuario de afiliado.</span>
+                  </li>
+                </ul>
+
+                <div class="mt-5">
+                  <button
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
+                  >
+                    <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    Continuar como Invitado
+                  </button>
+                  <p class="mt-2 text-[11px] text-slate-500 text-center">
+                    Ideal para primeras consultas o para quienes aún no se registraron en el portal.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- VISTA 2: Datos Invitado (UI.TUR.04b) -->
+          <section id="view-datos-invitado" class="tab-view hidden space-y-6">
+            <div class="space-y-2">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                UI.TUR.04b · Datos de Invitado
+              </p>
+              <h2 class="text-xl font-semibold text-slate-900">
+                Ingresá tus datos para recibir el turno
+              </h2>
+              <p class="text-sm text-slate-500 max-w-2xl">
+                Estos datos se utilizarán únicamente para enviarte la confirmación y recordatorios del turno.
+                Revisalos bien antes de confirmar.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 sm:p-7 max-w-xl">
+              <form class="space-y-4 text-sm">
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                    DNI
+                  </label>
+                  <input
+                    type="text"
+                    class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ej: 30123456"
+                  />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                    Nombre completo
+                  </label>
+                  <input
+                    type="text"
+                    class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ej: Juan Pérez"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="tu@mail.com"
+                    />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                      Confirmar email
+                    </label>
+                    <input
+                      type="email"
+                      class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Repetí tu mail"
+                    />
+                  </div>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                    Teléfono de contacto
+                  </label>
+                  <input
+                    type="tel"
+                    class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ej: 11 5555 5555"
+                  />
+                </div>
+
+                <!-- Captcha visual simulado -->
+                <div class="pt-1">
+                  <p class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">
+                    Verificación
+                  </p>
+                  <div class="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+                    <div class="h-5 w-5 border border-slate-300 rounded-sm bg-white flex items-center justify-center text-slate-400 text-xs">
+                      <i class="fa-solid fa-check opacity-40"></i>
+                    </div>
+                    <span class="text-xs text-slate-700 font-medium">No soy un robot</span>
+                    <span class="ml-auto text-slate-400 text-xs">
+                      <i class="fa-brands fa-google"></i>
+                    </span>
+                  </div>
+                  <p class="mt-1 text-[11px] text-slate-400">
+                    Elemento ilustrativo. En la implementación real se utilizaría un reCAPTCHA u otra solución equivalente.
+                  </p>
+                </div>
+
+                <div class="pt-3 flex flex-col gap-2">
+                  <button
+                    type="button"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                  >
+                    <i class="fa-solid fa-calendar-check text-xs"></i>
+                    Confirmar Turno
+                  </button>
+                  <p class="text-[11px] text-slate-500 text-center">
+                    Al confirmar, recibirás un mail con el comprobante del turno y las indicaciones para tu visita.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const views = document.querySelectorAll('.tab-view');
+
+        tabButtons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-target');
+
+            tabButtons.forEach((b) => {
+              if (b === btn) {
+                b.classList.add('border-blue-600', 'text-blue-600');
+                b.classList.remove('border-transparent', 'text-slate-500');
+              } else {
+                b.classList.remove('border-blue-600', 'text-blue-600');
+                if (!b.classList.contains('border-transparent')) b.classList.add('border-transparent');
+                if (!b.classList.contains('text-slate-500')) b.classList.add('text-slate-500');
+              }
+            });
+
+            views.forEach((view) => {
+              if (view.id === targetId) view.classList.remove('hidden');
+              else view.classList.add('hidden');
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
+

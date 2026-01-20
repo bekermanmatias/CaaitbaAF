@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CAAITBA · Portal de Turnos (Prototipo TUR.01)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-900">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-semibold shadow-sm">
+            CA
+          </div>
+          <div>
+            <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500">CAAITBA</p>
+            <p class="text-sm font-semibold text-gray-900">Portal de Autogestión · Turnos TUR.01</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="hidden sm:block text-right">
+            <p class="text-[11px] text-gray-400 uppercase tracking-wide">Afiliado</p>
+            <p class="text-xs font-medium text-gray-700">Juan Pérez</p>
+          </div>
+          <div class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-semibold text-gray-700">
+            JP
+          </div>
+        </div>
+      </div>
+
+      <nav class="bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="flex flex-wrap -mb-px text-sm font-medium">
+            <button
+              class="tab-btn inline-flex items-center gap-2 px-4 py-2.5 border-b-2 border-blue-600 text-blue-600"
+              data-target="view-dashboard"
+            >
+              <i class="fa-solid fa-calendar-check text-xs"></i>
+              <span>UI.TUR.01 · Mis Turnos</span>
+            </button>
+            <button
+              class="tab-btn inline-flex items-center gap-2 px-4 py-2.5 border-b-2 border-transparent text-gray-500 hover:text-blue-600"
+              data-target="view-wizard"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+              <span>UI.TUR.02/03/04 · Wizard Alta</span>
+            </button>
+            <button
+              class="tab-btn inline-flex items-center gap-2 px-4 py-2.5 border-b-2 border-transparent text-gray-500 hover:text-blue-600"
+              data-target="view-ticket"
+            >
+              <i class="fa-solid fa-ticket text-xs"></i>
+              <span>UI.TUR.05 · Ticket</span>
+            </button>
+            <button
+              class="tab-btn inline-flex items-center gap-2 px-4 py-2.5 border-b-2 border-transparent text-gray-500 hover:text-blue-600"
+              data-target="view-modals"
+            >
+              <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+              <span>UI.TUR.10/11 · Modales</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+        <!-- VISTA 1: DASHBOARD -->
+        <section id="view-dashboard" class="tab-view space-y-6">
+          <div class="flex justify-end">
+            <button
+              class="inline-flex items-center gap-2 rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-semibold shadow-sm hover:bg-blue-700"
+            >
+              <i class="fa-solid fa-plus"></i>
+              <span>Nuevo Turno</span>
+            </button>
+          </div>
+
+          <section class="relative bg-white shadow-sm rounded-xl border border-blue-100 overflow-hidden">
+            <div class="absolute inset-y-0 left-0 w-1.5 bg-blue-500"></div>
+            <div class="px-5 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <div class="flex-1 flex flex-col gap-3 sm:gap-2">
+                <div class="flex items-center gap-2 text-xs text-gray-500">
+                  <i class="fa-solid fa-calendar-day text-blue-500"></i>
+                  <span class="uppercase tracking-wide font-semibold text-gray-500">Tu próximo turno</span>
+                </div>
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <p class="text-xl sm:text-2xl font-semibold text-gray-900">
+                    Jueves, 25 de enero
+                  </p>
+                  <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700 border border-blue-100">
+                    <i class="fa-solid fa-clock"></i>
+                    10:30 hs
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-3 text-sm text-gray-700">
+                  <span class="inline-flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot text-blue-500 text-xs"></i>
+                    <span><span class="font-medium">Sede Central</span> · CABA</span>
+                  </span>
+                  <span class="inline-flex items-center gap-2">
+                    <i class="fa-solid fa-file-lines text-blue-500 text-xs"></i>
+                    <span><span class="font-medium">Trámite:</span> Jubilacion</span>
+                  </span>
+                  <span class="inline-flex items-center gap-2 text-xs text-gray-500">
+                    <i class="fa-solid fa-hashtag"></i>
+                    Código TUR-4587
+                  </span>
+                </div>
+                <p class="text-xs text-gray-500 max-w-xl">
+                  Recordá presentarte 10 minutos antes con tu DNI y la documentación requerida para la gestión de Jubilacion.
+                </p>
+
+                <div class="mt-1 flex flex-wrap gap-2">
+                  <button
+                    class="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                  >
+                    <i class="fa-regular fa-calendar-pen"></i>
+                    Reprogramar
+                  </button>
+                  <button
+                    class="inline-flex items-center gap-2 rounded-full border border-transparent bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-100"
+                  >
+                    <i class="fa-regular fa-trash-can"></i>
+                    Cancelar turno
+                  </button>
+                </div>
+              </div>
+
+              <div class="w-full sm:w-48 md:w-56 flex flex-col items-center justify-center">
+                <div class="w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50">
+                  <div class="w-24 h-24 bg-[radial-gradient(circle,_#111_1px,_transparent_1px)] [background-size:6px_6px] rounded-md"></div>
+                </div>
+                <p class="mt-2 text-[11px] text-gray-500 text-center max-w-[10rem]">
+                  Presentá este código QR en el ingreso de la sede para validar tu turno.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <div>
+                <h2 class="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                  <i class="fa-solid fa-clock-rotate-left text-blue-500 text-xs"></i>
+                  Historial reciente
+                </h2>
+                <p class="text-xs text-gray-500">
+                  Últimos movimientos de turnos asociados a tu cuenta.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50 text-xs uppercase text-gray-500 tracking-wide">
+                  <tr>
+                    <th class="px-4 py-2 text-left font-semibold">Fecha</th>
+                    <th class="px-4 py-2 text-left font-semibold">Trámite</th>
+                    <th class="px-4 py-2 text-left font-semibold">Sede</th>
+                    <th class="px-4 py-2 text-center font-semibold">Estado</th>
+                    <th class="px-4 py-2 text-right font-semibold">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-xs">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3">10/01/2026</td>
+                    <td class="px-4 py-3">Jubilaciones</td>
+                    <td class="px-4 py-3">Sede Central</td>
+                    <td class="px-4 py-3 text-center">
+                      <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5">
+                        <i class="fa-solid fa-circle-check text-[10px]"></i>
+                        <span class="font-medium text-[11px]">Atendido</span>
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                      <button
+                        class="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-3 py-1 text-[11px] font-medium text-gray-700 hover:bg-gray-50"
+                      >
+                        <i class="fa-solid fa-file-arrow-down text-xs text-blue-500"></i>
+                        Ver comprobante
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3">05/12/2025</td>
+                    <td class="px-4 py-3">Consultas</td>
+                    <td class="px-4 py-3">Sucursal Norte</td>
+                    <td class="px-4 py-3 text-center">
+                      <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5">
+                        <i class="fa-solid fa-circle-exclamation text-[10px]"></i>
+                        <span class="font-medium text-[11px]">Ausente</span>
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-right text-gray-400 text-[11px]">
+                      Sin comprobante
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3">20/11/2025</td>
+                    <td class="px-4 py-3">Entrega Doc.</td>
+                    <td class="px-4 py-3">Sucursal Sur</td>
+                    <td class="px-4 py-3 text-center">
+                      <span class="inline-flex items-center gap-1 rounded-full bg-red-50 text-red-700 border border-red-200 px-2 py-0.5">
+                        <i class="fa-solid fa-circle-xmark text-[10px]"></i>
+                        <span class="font-medium text-[11px]">Cancelado</span>
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-right text-gray-400 text-[11px]">
+                      Sin comprobante
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!-- VISTA 2: WIZARD (UI.TUR.02 / 03 / 04) -->
+        <section id="view-wizard" class="tab-view hidden space-y-6">
+          <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 sm:p-6 space-y-5">
+            <!-- Stepper -->
+            <div class="space-y-2">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Solicitud de nuevo turno
+              </p>
+              <div class="flex items-center gap-3 text-xs font-medium text-gray-600">
+                <!-- Paso 1 -->
+                <div class="flex items-center gap-2">
+                  <div class="h-6 w-6 rounded-full border border-emerald-500 bg-emerald-50 flex items-center justify-center text-emerald-700 text-[11px]">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <span class="text-emerald-700">1. Servicio</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-emerald-200 via-blue-200 to-blue-200"></div>
+                <!-- Paso 2 -->
+                <div class="flex items-center gap-2">
+                  <div class="h-6 w-6 rounded-full border border-blue-600 bg-blue-50 flex items-center justify-center text-blue-700 text-[11px]">
+                    2
+                  </div>
+                  <span class="text-blue-700">Fecha y Hora</span>
+                </div>
+                <div class="flex-1 h-px bg-gradient-to-r from-blue-200 to-gray-100"></div>
+                <!-- Paso 3 -->
+                <div class="flex items-center gap-2">
+                  <div class="h-6 w-6 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center text-gray-400 text-[11px]">
+                    3
+                  </div>
+                  <span class="text-gray-400">Confirmar</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- UI.TUR.02 - Paso 1: Definición del Servicio -->
+            <div class="mt-3 border border-gray-100 rounded-lg bg-gray-50/60 p-4 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    UI.TUR.02 · Paso 1 de 3
+                  </p>
+                  <h3 class="text-sm font-semibold text-gray-900 mt-1">Definí el servicio</h3>
+                  <p class="text-xs text-gray-500 mt-1">
+                    Elegí en qué sede querés ser atendido y para qué tipo de trámite. Los requisitos se actualizan automáticamente.
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                    Sede
+                  </label>
+                  <select
+                    class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    <option>Seleccionar sede</option>
+                    <option selected>Sede Central</option>
+                    <option>Sucursal Norte</option>
+                    <option>Sucursal Sur</option>
+                  </select>
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                    Motivo del turno
+                  </label>
+                  <select
+                    class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    <option>Seleccionar motivo</option>
+                    <option selected>Jubilaciones</option>
+                    <option>Jubilacions</option>
+                    <option>Consultas</option>
+                    <option>Entrega de Documentación</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                <div class="md:col-span-2 space-y-2">
+                  <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                    Requisitos para este motivo
+                  </p>
+                  <div class="rounded-lg border border-gray-200 bg-white px-3 py-3 text-xs text-gray-700 space-y-1.5">
+                    <p class="font-semibold text-gray-800 flex items-center gap-1.5">
+                      <i class="fa-solid fa-circle-info text-blue-500"></i>
+                      Jubilaciones · Turno presencial
+                    </p>
+                    <ul class="list-disc list-inside space-y-0.5">
+                      <li>DNI y fotocopia.</li>
+                      <li>Constancia de CUIL.</li>
+                      <li>Historia laboral o recibos de sueldo (últimos 6 meses).</li>
+                      <li>Documentación adicional según el tipo de beneficio.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="space-y-2 text-xs text-gray-500">
+                  <p class="font-semibold text-gray-700 flex items-center gap-1.5">
+                    <i class="fa-regular fa-circle-question text-blue-500"></i>
+                    Ayuda rápida
+                  </p>
+                  <p>
+                    Si tenés dudas sobre qué trámite elegir, podés iniciar con
+                    <span class="font-semibold text-blue-700">“Consultas”</span> y el equipo de atención te orientará.
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                >
+                  Siguiente
+                  <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- UI.TUR.03 - Paso 2: Agenda -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      UI.TUR.03 · Paso 2 de 3
+                    </p>
+                    <p class="text-sm font-semibold text-gray-900 flex items-center gap-2 mt-1">
+                      <i class="fa-regular fa-calendar text-blue-600"></i>
+                      Seleccioná el día
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-gray-500">
+                    <button class="px-2 py-1 rounded-md hover:bg-gray-100">
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span class="font-medium">Enero 2026</span>
+                    <button class="px-2 py-1 rounded-md hover:bg-gray-100">
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg border border-gray-200 p-3">
+                  <div class="grid grid-cols-7 text-center text-[11px] font-medium text-gray-500 mb-2">
+                    <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+                  </div>
+                  <div class="grid grid-cols-7 gap-1 text-xs">
+                    <span class="h-8 flex items-center justify-center text-gray-300">30</span>
+                    <span class="h-8 flex items-center justify-center text-gray-300">31</span>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">1</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">2</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">3</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">4</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">5</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">6</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">7</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">8</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">9</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">10</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">11</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">12</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">13</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">14</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">15</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">16</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">17</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">18</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">19</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">20</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">21</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">22</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">23</button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">24</button>
+                    <button class="h-8 flex items-center justify-center rounded-md bg-blue-600 text-white font-semibold shadow-sm">
+                      25
+                    </button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-300 bg-gray-100/70 cursor-not-allowed">
+                      26
+                    </button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-300 bg-gray-50 cursor-not-allowed">
+                      27
+                    </button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-300 bg-gray-50 cursor-not-allowed">
+                      28
+                    </button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-300 bg-gray-50 cursor-not-allowed">
+                      29
+                    </button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-300 bg-gray-50 cursor-not-allowed">
+                      30
+                    </button>
+                    <button class="h-8 flex items-center justify-center rounded-md text-gray-300 bg-gray-50 cursor-not-allowed">
+                      31
+                    </button>
+                    <span></span><span></span>
+                  </div>
+                </div>
+                <p class="text-xs text-gray-500">
+                  Seleccionaste el día <span class="font-semibold text-gray-800">25/01</span>. Ahora elegí el horario disponible.
+                </p>
+              </div>
+
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                    <i class="fa-regular fa-clock text-blue-600"></i>
+                    Horarios disponibles para el 25/01
+                  </p>
+                  <span class="text-[11px] text-gray-500">
+                    Zona horaria: <span class="font-medium">GMT-3 (Argentina)</span>
+                  </span>
+                </div>
+                <div class="bg-gray-50 rounded-lg border border-gray-200 p-3 space-y-3">
+                  <div class="flex flex-wrap gap-2 text-xs">
+                    <button class="px-3 py-1.5 rounded-full border border-blue-600 bg-blue-50 text-blue-700 font-semibold shadow-sm">
+                      09:00
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
+                      09:15
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
+                      09:30
+                    </button>
+                    <button class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
+                      10:00
+                    </button>
+                  </div>
+
+                  <div class="rounded-md bg-blue-50 border border-blue-100 px-3 py-2 text-[11px] text-blue-800 flex items-start gap-2">
+                    <i class="fa-solid fa-hourglass-half mt-0.5"></i>
+                    <p>
+                      Estamos <span class="font-semibold">reservando tu cupo por 5 minutos</span> mientras completás el formulario.
+                      No cierres esta ventana hasta confirmar tu turno.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <button
+                    class="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                  >
+                    <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                    Atrás
+                  </button>
+                  <button
+                    class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                  >
+                    Siguiente
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- UI.TUR.04 - Paso 3: Confirmación -->
+            <div class="mt-6 border-t border-gray-200 pt-4">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    UI.TUR.04 · Paso 3 de 3
+                  </p>
+                  <h3 class="text-sm font-semibold text-gray-900 mt-1">Confirmá tu reserva</h3>
+                  <p class="text-xs text-gray-500 mt-1">
+                    Revisá que toda la información sea correcta antes de confirmar tu turno.
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+                <div class="md:col-span-2 bg-gray-50 border border-gray-200 rounded-lg p-3 sm:p-4 space-y-2 text-sm">
+                  <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                    Resumen del turno
+                  </p>
+                  <div class="flex flex-wrap gap-3 text-xs sm:text-sm">
+                    <div>
+                      <p class="text-[11px] text-gray-500">Sede</p>
+                      <p class="font-semibold text-gray-900">Sede Central</p>
+                    </div>
+                    <div>
+                      <p class="text-[11px] text-gray-500">Motivo</p>
+                      <p class="font-semibold text-gray-900">Jubilaciones</p>
+                    </div>
+                    <div>
+                      <p class="text-[11px] text-gray-500">Fecha</p>
+                      <p class="font-semibold text-gray-900">25/01/2026</p>
+                    </div>
+                    <div>
+                      <p class="text-[11px] text-gray-500">Hora</p>
+                      <p class="font-semibold text-gray-900">09:00 hs</p>
+                    </div>
+                  </div>
+                  <p class="mt-2 text-xs text-gray-500">
+                    Recibirás un correo electrónico con el comprobante y un enlace para
+                    <span class="font-semibold text-blue-700">reprogramar o cancelar</span> tu turno si lo necesitás.
+                  </p>
+                </div>
+                <div class="flex flex-col justify-between gap-3 text-xs text-gray-600">
+                  <div class="bg-white border border-blue-100 rounded-lg p-3 space-y-1.5">
+                    <p class="font-semibold text-gray-800 flex items-center gap-1.5">
+                      <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                      Antes de confirmar
+                    </p>
+                    <ul class="list-disc list-inside space-y-0.5">
+                      <li>Verificá que los datos de sede y horario sean correctos.</li>
+                      <li>Tené a mano la documentación obligatoria.</li>
+                    </ul>
+                  </div>
+                  <div class="flex justify-end">
+                    <button
+                      class="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+                    >
+                      Confirmar reserva
+                      <i class="fa-solid fa-check text-[10px]"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- VISTA 3: TICKET -->
+        <section id="view-ticket" class="tab-view hidden">
+          <div class="min-h-[420px] flex flex-col items-center justify-center">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 px-6 py-6 sm:px-8 sm:py-8 max-w-md w-full text-center space-y-5">
+              <div class="flex justify-center">
+                <div class="h-16 w-16 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 shadow-sm">
+                  <i class="fa-solid fa-check text-3xl"></i>
+                </div>
+              </div>
+              <div>
+                <h1 class="text-xl font-semibold text-gray-900">¡Turno confirmado!</h1>
+                <p class="mt-1 text-sm text-gray-600">
+                  Te esperamos en <span class="font-semibold">Sede Central</span> el
+                  <span class="font-semibold">25/01</span> a las
+                  <span class="font-semibold">10:30 hs</span>.
+                </p>
+                <p class="mt-2 text-xs text-gray-500">
+                  Recordá presentarte con tu DNI y la documentación requerida. Recibirás un correo con el comprobante del turno.
+                </p>
+              </div>
+
+              <div class="space-y-3">
+                <button
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                >
+                  <i class="fa-solid fa-file-arrow-down"></i>
+                  Descargar comprobante (PDF)
+                </button>
+                <button
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                >
+                  <i class="fa-solid fa-arrow-left"></i>
+                  Volver al inicio
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA 4: MODALES (UI.TUR.10 / UI.TUR.11) -->
+        <section id="view-modals" class="tab-view hidden space-y-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-base font-semibold text-gray-900">UI.TUR.10/11 · Modales (Acciones críticas)</h2>
+              <p class="text-sm text-gray-500 max-w-3xl">
+                Maqueta estática: muestra <span class="font-semibold">qué es cada modal</span> y <span class="font-semibold">cuándo aparece</span> dentro del flujo de <span class="font-semibold">Mis Turnos</span> (UI.TUR.01).
+              </p>
+            </div>
+          </div>
+
+          <div class="relative min-h-[620px] bg-gray-100 rounded-2xl border border-gray-200 overflow-hidden">
+            <!-- Overlay simulado -->
+            <div class="absolute inset-0 bg-black/40"></div>
+
+            <!-- Contenedor centrado (más ancho) -->
+            <div class="relative z-10 p-5 sm:p-6 lg:p-8">
+              <div class="mx-auto w-full max-w-6xl rounded-2xl bg-white/95 backdrop-blur shadow-xl border border-gray-200 p-4 sm:p-6">
+                <div class="flex flex-col gap-1 pb-4 border-b border-gray-100">
+                  <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                    Referencia visual · overlay + modal
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    Los botones no ejecutan acciones reales: sólo documentan la UI y el copy.
+                  </p>
+                </div>
+
+                <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+                  <!-- Modal Cancelación (UI.TUR.10) -->
+                  <div class="flex flex-col rounded-2xl border border-red-100 bg-white shadow-sm overflow-hidden">
+                    <div class="px-5 pt-4 pb-3 border-b border-gray-100 flex items-start justify-between gap-3">
+                      <div class="min-w-0">
+                        <span class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-semibold text-red-700 border border-red-100 uppercase tracking-wide">
+                          UI.TUR.10 · Cancelación
+                        </span>
+                        <div class="mt-2 flex items-center gap-2">
+                          <div class="h-9 w-9 rounded-full bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                          </div>
+                          <div class="min-w-0">
+                            <p class="text-sm font-semibold text-gray-900 leading-5">Cancelar turno</p>
+                            <p class="text-[11px] text-gray-500 leading-4">
+                              Pide confirmación antes de anular el turno. Acción irreversible.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="text-gray-400 hover:text-gray-600 text-sm" aria-label="Cerrar">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </div>
+
+                    <div class="px-5 py-4 space-y-3">
+                      <p class="text-sm text-gray-700">
+                        ¿Estás seguro que deseas cancelar? <span class="font-semibold">Perderás tu lugar reservado.</span>
+                      </p>
+                      <div class="rounded-xl border border-red-100 bg-red-50/40 p-3 text-xs text-gray-600">
+                        <p>
+                          <span class="font-semibold">Turno:</span> Jubilaciones · Jueves 25/01 · 10:30 hs · Sede Central
+                        </p>
+                        <p class="mt-1 text-[11px] text-gray-500">
+                          Si cancelás ahora, las próximas fechas disponibles pueden tener mayor demanda.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="mt-auto px-5 py-3 bg-gray-50 border-t border-gray-100 flex flex-wrap justify-end gap-2">
+                      <button class="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100">
+                        <i class="fa-solid fa-rotate-left text-[11px]"></i>
+                        No, mantener
+                      </button>
+                      <button class="inline-flex items-center gap-1.5 rounded-md bg-red-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-red-700">
+                        <i class="fa-solid fa-trash-can text-[11px]"></i>
+                        Sí, cancelar
+                      </button>
+                    </div>
+
+                    <div class="px-5 py-3 text-[11px] text-gray-500 bg-white border-t border-red-50">
+                      <span class="font-semibold text-gray-700">Uso:</span> se dispara al tocar <span class="italic">“Cancelar turno”</span> en el card del próximo turno (UI.TUR.01).
+                    </div>
+                  </div>
+
+                  <!-- Modal Reprogramación (UI.TUR.11) -->
+                  <div class="flex flex-col rounded-2xl border border-blue-100 bg-white shadow-sm overflow-hidden">
+                    <div class="px-5 pt-4 pb-3 border-b border-gray-100 flex items-start justify-between gap-3">
+                      <div class="min-w-0">
+                        <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-blue-700 border border-blue-100 uppercase tracking-wide">
+                          UI.TUR.11 · Reprogramación
+                        </span>
+                        <div class="mt-2 flex items-center gap-2">
+                          <div class="h-9 w-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-regular fa-calendar-days"></i>
+                          </div>
+                          <div class="min-w-0">
+                            <p class="text-sm font-semibold text-gray-900 leading-5">Reprogramar turno</p>
+                            <p class="text-[11px] text-gray-500 leading-4">
+                              Permite elegir una nueva fecha y horario (mantiene el trámite y la sede).
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="text-gray-400 hover:text-gray-600 text-sm" aria-label="Cerrar">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </div>
+
+                    <div class="px-5 py-4 space-y-3 text-xs">
+                      <div class="rounded-xl border border-blue-100 bg-blue-50/40 p-3 text-gray-700">
+                        Estás reprogramando: <span class="font-semibold">Jubilaciones</span> · <span class="font-semibold">Sede Central</span>
+                      </div>
+
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Mini calendario -->
+                        <div class="bg-gray-50 rounded-xl border border-gray-200 p-3 space-y-2">
+                          <div class="flex items-center justify-between text-[11px] text-gray-600">
+                            <span class="font-semibold">Febrero 2026</span>
+                            <div class="flex gap-1">
+                              <button class="px-1.5 py-0.5 rounded hover:bg-gray-100" aria-label="Mes anterior">
+                                <i class="fa-solid fa-chevron-left"></i>
+                              </button>
+                              <button class="px-1.5 py-0.5 rounded hover:bg-gray-100" aria-label="Mes siguiente">
+                                <i class="fa-solid fa-chevron-right"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="grid grid-cols-7 text-center text-[10px] font-medium text-gray-500">
+                            <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                          </div>
+                          <div class="grid grid-cols-7 gap-1 text-[11px]">
+                            <span class="h-7"></span><span class="h-7"></span><span class="h-7 flex items-center justify-center text-gray-300">1</span>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">2</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">3</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">4</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">5</button>
+                            <button class="h-7 flex items-center justify-center rounded-md bg-blue-600 text-white font-semibold shadow-sm">6</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">7</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">8</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">9</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">10</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-100">11</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-300 bg-gray-100/70 cursor-not-allowed">12</button>
+                            <button class="h-7 flex items-center justify-center rounded-md text-gray-300 bg-gray-100/70 cursor-not-allowed">13</button>
+                          </div>
+                          <p class="text-[11px] text-gray-500">
+                            Días en gris: sin disponibilidad.
+                          </p>
+                        </div>
+
+                        <!-- Horarios -->
+                        <div class="space-y-2">
+                          <p class="text-[11px] font-semibold text-gray-600 uppercase tracking-wide">
+                            Horarios disponibles · 06/02
+                          </p>
+                          <div class="bg-gray-50 rounded-xl border border-gray-200 p-3 flex flex-wrap gap-2">
+                            <button class="px-3 py-1.5 rounded-full border border-blue-600 bg-blue-50 text-[11px] text-blue-700 font-semibold shadow-sm">
+                              09:00
+                            </button>
+                            <button class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-[11px] text-gray-700 hover:bg-gray-100">
+                              09:30
+                            </button>
+                            <button class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-[11px] text-gray-700 hover:bg-gray-100">
+                              10:00
+                            </button>
+                            <button class="px-3 py-1.5 rounded-full border border-gray-300 bg-white text-[11px] text-gray-700 hover:bg-gray-100">
+                              10:30
+                            </button>
+                          </div>
+                          <p class="text-[11px] text-gray-500">
+                            Al confirmar, se envía notificación con la nueva fecha/hora.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-auto px-5 py-3 bg-gray-50 border-t border-gray-100 flex flex-wrap justify-end gap-2">
+                      <button class="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100">
+                        <i class="fa-solid fa-xmark text-[11px]"></i>
+                        Cancelar
+                      </button>
+                      <button class="inline-flex items-center gap-1.5 rounded-md bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700">
+                        <i class="fa-solid fa-floppy-disk text-[11px]"></i>
+                        Guardar reprogramación
+                      </button>
+                    </div>
+
+                    <div class="px-5 py-3 text-[11px] text-gray-500 bg-white border-t border-blue-50">
+                      <span class="font-semibold text-gray-700">Uso:</span> se dispara al tocar <span class="italic">“Reprogramar”</span> desde el card del próximo turno (UI.TUR.01).
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-xs text-gray-500 text-center">
+            Vista estática: overlay + modales. No incluye lógica real (sólo documentación visual).
+          </p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const views = document.querySelectorAll('.tab-view');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+
+          tabButtons.forEach(b => {
+            if (b === btn) {
+              b.classList.add('border-blue-600', 'text-blue-600');
+              b.classList.remove('border-transparent', 'text-gray-500');
+            } else {
+              b.classList.remove('border-blue-600', 'text-blue-600');
+              if (!b.classList.contains('border-transparent')) {
+                b.classList.add('border-transparent');
+              }
+              if (!b.classList.contains('text-gray-500')) {
+                b.classList.add('text-gray-500');
+              }
+            }
+          });
+
+          views.forEach(view => {
+            if (view.id === targetId) {
+              view.classList.remove('hidden');
+            } else {
+              view.classList.add('hidden');
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+

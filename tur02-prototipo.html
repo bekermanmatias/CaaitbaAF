@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TUR.02 · Atención Presencial - Prototipo</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome (iconos) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      ::-webkit-scrollbar { width: 10px; height: 10px; }
+      ::-webkit-scrollbar-track { background: #f3f4f6; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <div class="min-h-screen">
+      <!-- Topbar -->
+      <header class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-gray-200">
+        <div class="px-5 py-4 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm font-semibold">
+              CA
+            </div>
+            <div class="leading-tight">
+              <p class="text-sm font-semibold">CAAITBA · TUR.02</p>
+              <p class="text-xs text-gray-500">Atención Presencial · Recepción, Consola, TV y Tótem</p>
+            </div>
+          </div>
+
+          <div class="hidden md:flex items-center gap-2 text-xs text-gray-500">
+            <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1">
+              <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+              Listo para captura
+            </span>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <nav class="px-5">
+          <div class="flex flex-wrap gap-2 border-b border-gray-200">
+            <button class="tab-btn border-b-2 border-blue-600 text-blue-600 px-3 py-3 text-sm font-semibold"
+              data-target="view-recepcion">
+              <i class="fa-solid fa-door-open mr-2"></i>
+              UI.TUR.02.01 · Recepción
+            </button>
+            <button class="tab-btn border-b-2 border-transparent text-gray-500 px-3 py-3 text-sm font-semibold hover:text-gray-700"
+              data-target="view-consola">
+              <i class="fa-solid fa-headset mr-2"></i>
+              UI.TUR.02.02 · Consola de Atención
+            </button>
+            <button class="tab-btn border-b-2 border-transparent text-gray-500 px-3 py-3 text-sm font-semibold hover:text-gray-700"
+              data-target="view-tv">
+              <i class="fa-solid fa-tv mr-2"></i>
+              UI.TUR.02.03 · Visor TV Sala
+            </button>
+            <button class="tab-btn border-b-2 border-transparent text-gray-500 px-3 py-3 text-sm font-semibold hover:text-gray-700"
+              data-target="view-totem">
+              <i class="fa-solid fa-tablet-screen-button mr-2"></i>
+              UI.TUR.02.05 · Tótem
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main class="px-5 py-6">
+        <!-- VISTA 1: Recepción (UI.TUR.02.01) -->
+        <section id="view-recepcion" class="tab-view space-y-5">
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <div class="flex-1">
+              <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Recepción</p>
+              <h2 class="mt-1 text-lg font-semibold">Personas citadas para hoy</h2>
+              <p class="text-sm text-gray-500 max-w-3xl">
+                Pantalla para <span class="font-semibold">validación de llegada</span> (QR/DNI) y registro de demanda espontánea.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">
+                <i class="fa-solid fa-plus"></i>
+                Nueva Demanda Espontánea
+              </button>
+              <button class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+                <i class="fa-solid fa-sliders"></i>
+                Filtros
+              </button>
+            </div>
+          </div>
+
+          <!-- Header: Buscador grande -->
+          <div class="rounded-2xl border border-gray-200 bg-white shadow-sm p-4 sm:p-5">
+            <div class="flex flex-col lg:flex-row lg:items-center gap-3">
+              <div class="flex-1">
+                <label class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Escanear DNI / QR</label>
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="flex-1 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input
+                      class="w-full rounded-xl border border-gray-200 bg-gray-50 pl-10 pr-3 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Ej: 30123456 ó escanear QR…"
+                    />
+                  </div>
+                  <button class="inline-flex items-center justify-center rounded-xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black">
+                    <i class="fa-solid fa-qrcode mr-2"></i>
+                    Capturar
+                  </button>
+                </div>
+                <p class="mt-2 text-xs text-gray-500">
+                  Sugerencia: el operador puede pegar el DNI o usar un lector de QR; al validar, se marca “Presente”.
+                </p>
+              </div>
+              <div class="lg:w-64 rounded-xl border border-gray-200 bg-gray-50 p-3 text-xs text-gray-600">
+                <p class="font-semibold text-gray-800">Estado de sala (simulado)</p>
+                <div class="mt-2 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Esperando</span>
+                  <span class="font-semibold text-gray-800">8</span>
+                </div>
+                <div class="mt-1 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-amber-500"></span>Llegada tarde</span>
+                  <span class="font-semibold text-gray-800">2</span>
+                </div>
+                <div class="mt-1 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-slate-400"></span>Pendiente</span>
+                  <span class="font-semibold text-gray-800">5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla principal -->
+          <div class="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">Turnos del día</p>
+                <p class="text-xs text-gray-500">Listado operativo para “dar presente” y controlar puntualidad.</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1">
+                  <i class="fa-regular fa-clock"></i>
+                  Actualizado hace 2 min
+                </span>
+              </div>
+            </div>
+
+            <div class="overflow-auto">
+              <table class="min-w-full text-sm">
+                <thead class="bg-gray-50 text-gray-600 text-xs uppercase tracking-wide">
+                  <tr>
+                    <th class="text-left px-5 py-3 border-b border-gray-200">Hora</th>
+                    <th class="text-left px-5 py-3 border-b border-gray-200">DNI</th>
+                    <th class="text-left px-5 py-3 border-b border-gray-200">Nombre</th>
+                    <th class="text-left px-5 py-3 border-b border-gray-200">Trámite</th>
+                    <th class="text-left px-5 py-3 border-b border-gray-200">Estado</th>
+                    <th class="text-right px-5 py-3 border-b border-gray-200">Acción</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-5 py-4 font-semibold text-gray-900">09:00</td>
+                    <td class="px-5 py-4 text-gray-700">30.123.456</td>
+                    <td class="px-5 py-4 text-gray-900 font-medium">Juan Perez</td>
+                    <td class="px-5 py-4 text-gray-700">Jubilación</td>
+                    <td class="px-5 py-4">
+                      <span class="inline-flex items-center gap-2 rounded-full bg-red-50 text-red-700 border border-red-100 px-3 py-1 text-xs font-semibold">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                        Llegada Tarde
+                      </span>
+                    </td>
+                    <td class="px-5 py-4 text-right">
+                      <button class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-700">
+                        <i class="fa-solid fa-user-check"></i>
+                        Dar Presente
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-5 py-4 font-semibold text-gray-900">09:15</td>
+                    <td class="px-5 py-4 text-gray-700">28.987.654</td>
+                    <td class="px-5 py-4 text-gray-900 font-medium">Ana Gomez</td>
+                    <td class="px-5 py-4 text-gray-700">Jubilacion</td>
+                    <td class="px-5 py-4">
+                      <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 text-xs font-semibold">
+                        <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                        Esperando
+                      </span>
+                    </td>
+                    <td class="px-5 py-4 text-right">
+                      <span class="inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700">
+                        <i class="fa-solid fa-check"></i>
+                        Ya ingresó
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-5 py-4 font-semibold text-gray-900">09:30</td>
+                    <td class="px-5 py-4 text-gray-700">27.555.111</td>
+                    <td class="px-5 py-4 text-gray-900 font-medium">Luis Rivas</td>
+                    <td class="px-5 py-4 text-gray-700">Consulta</td>
+                    <td class="px-5 py-4">
+                      <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 text-slate-700 border border-slate-200 px-3 py-1 text-xs font-semibold">
+                        <span class="h-2 w-2 rounded-full bg-slate-400"></span>
+                        Pendiente
+                      </span>
+                    </td>
+                    <td class="px-5 py-4 text-right">
+                      <button class="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50">
+                        <i class="fa-solid fa-ellipsis"></i>
+                        Acciones
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- UI.TUR.02.04 · Modal de Alta Espontánea (maqueta estática) -->
+          <div class="relative mt-4 rounded-2xl border border-dashed border-blue-200 bg-blue-50/40 p-4">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-blue-700 flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-xs"></i>
+              UI.TUR.02.04 · Modal de Alta Espontánea (se abre sobre esta pantalla)
+            </p>
+            <div class="mt-3 relative bg-white rounded-2xl shadow-lg border border-gray-200 max-w-xl">
+              <div class="px-5 pt-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Alta espontánea</p>
+                  <p class="text-xs text-gray-500">Registrar a una persona sin cita previa y generar turno en cola.</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600 text-sm" aria-label="Cerrar">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <div class="px-5 py-4 space-y-4 text-sm">
+                <div class="space-y-2">
+                  <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide">Buscar afiliado (DNI)</label>
+                  <div class="flex gap-2">
+                    <div class="relative flex-1">
+                      <i class="fa-solid fa-id-card absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                      <input class="w-full rounded-lg border border-gray-200 bg-gray-50 pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Ingrese DNI…" />
+                    </div>
+                    <button class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-3.5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-black">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                      Buscar
+                    </button>
+                  </div>
+                  <p class="text-xs text-gray-500">Si no se encuentra, se puede continuar como invitado.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide">Motivo de atención</label>
+                    <select class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                      <option>Seleccione…</option>
+                      <option>Consulta General</option>
+                      <option>Jubilación</option>
+                      <option>Préstamo</option>
+                    </select>
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide">Nivel de prioridad</label>
+                    <select class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                      <option>Normal</option>
+                      <option>Prioritario</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="px-5 py-3 bg-gray-50 border-t border-gray-100 flex flex-wrap justify-end gap-2 text-xs">
+                <button class="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100">
+                  Cancelar
+                </button>
+                <button class="inline-flex items-center gap-2 rounded-md bg-blue-600 px-3.5 py-1.5 font-semibold text-white shadow-sm hover:bg-blue-700">
+                  <i class="fa-solid fa-user-plus text-[11px]"></i>
+                  Generar turno y poner en cola
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA 2: Consola de Atención (UI.TUR.02.02) -->
+        <section id="view-consola" class="tab-view hidden space-y-5">
+          <div class="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Consola de Atención</p>
+              <h2 class="mt-1 text-lg font-semibold">Operador · Puesto 05</h2>
+              <p class="text-sm text-gray-500 max-w-3xl">
+                Vista tri-columna: <span class="font-semibold">cola</span>, <span class="font-semibold">atención activa</span> y <span class="font-semibold">historial</span>.
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-600">
+                <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                Online
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600">
+                <i class="fa-regular fa-calendar"></i>
+                Hoy · 20/01/2026
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+            <!-- Columna Izq: Cola -->
+            <aside class="xl:col-span-3 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div class="px-4 py-4 border-b border-gray-200">
+                <p class="text-sm font-semibold">Cola · Próximos</p>
+                <p class="text-xs text-gray-500">Ordenados por prioridad/horario.</p>
+              </div>
+              <div class="p-3 space-y-2">
+                <div class="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="text-sm font-semibold text-gray-900">1. María Sosa</p>
+                    <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-2 py-0.5">Prioridad</span>
+                  </div>
+                  <p class="mt-1 text-xs text-gray-600">Trámite: Discapacidad</p>
+                  <p class="text-xs text-gray-500">Turno: 09:45</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-3">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="text-sm font-semibold text-gray-900">2. Pedro Ruiz</p>
+                    <span class="text-[11px] font-semibold text-gray-700 bg-gray-50 border border-gray-200 rounded-full px-2 py-0.5">Turno</span>
+                  </div>
+                  <p class="mt-1 text-xs text-gray-600">Trámite: Consulta General</p>
+                  <p class="text-xs text-gray-500">Turno: 10:00</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-3">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="text-sm font-semibold text-gray-900">3. Lucía Benítez</p>
+                    <span class="text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-100 rounded-full px-2 py-0.5">Espera</span>
+                  </div>
+                  <p class="mt-1 text-xs text-gray-600">Trámite: Jubilacion</p>
+                  <p class="text-xs text-gray-500">Turno: 10:15</p>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Columna Central: Activo -->
+            <section class="xl:col-span-6 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold">Atención activa</p>
+                  <p class="text-xs text-gray-500">Persona seleccionada (simulada).</p>
+                </div>
+                <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 text-xs font-semibold">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                  Estado: Esperando
+                </span>
+              </div>
+
+              <div class="p-5 space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="h-16 w-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500">
+                    <i class="fa-regular fa-user text-2xl"></i>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-lg font-semibold leading-tight">Ana Gomez</p>
+                    <p class="text-sm text-gray-500">DNI 28.987.654 · Turno 09:15</p>
+                    <div class="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                      <div class="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                        <p class="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">Trámite</p>
+                        <p class="mt-1 font-semibold text-gray-900">Solicitud de Jubilacion</p>
+                      </div>
+                      <div class="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                        <p class="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">Sede</p>
+                        <p class="mt-1 font-semibold text-gray-900">Central</p>
+                      </div>
+                      <div class="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                        <p class="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">Puesto</p>
+                        <p class="mt-1 font-semibold text-gray-900">05</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botonera grande -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <button class="w-full rounded-2xl bg-blue-600 text-white px-4 py-4 font-semibold shadow-sm hover:bg-blue-700 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-bell text-lg"></i>
+                    LLAMAR
+                  </button>
+                  <button class="w-full rounded-2xl bg-amber-500 text-white px-4 py-4 font-semibold shadow-sm hover:bg-amber-600 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-repeat text-lg"></i>
+                    RE-LLAMAR
+                  </button>
+                  <button class="w-full rounded-2xl bg-emerald-600 text-white px-4 py-4 font-semibold shadow-sm hover:bg-emerald-700 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-play text-lg"></i>
+                    INICIAR ATENCIÓN
+                  </button>
+                  <button class="w-full rounded-2xl bg-red-600 text-white px-4 py-4 font-semibold shadow-sm hover:bg-red-700 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-user-xmark text-lg"></i>
+                    AUSENTE
+                  </button>
+                </div>
+
+                <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-600">
+                  <p class="font-semibold text-gray-900">Nota operativa</p>
+                  <p class="mt-1">“LLAMAR” impacta en el visor TV (UI.TUR.02.03). “AUSENTE” deriva el turno a historial.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Columna Der: Historial -->
+            <aside class="xl:col-span-3 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div class="px-4 py-4 border-b border-gray-200">
+                <p class="text-sm font-semibold">Historial · Ana Gomez</p>
+                <p class="text-xs text-gray-500">Últimos 2 trámites (simulado).</p>
+              </div>
+              <div class="p-4 space-y-3">
+                <div class="flex gap-3">
+                  <div class="mt-0.5 h-8 w-8 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-sm font-semibold">Atendido</p>
+                    <p class="text-xs text-gray-600">Consulta General</p>
+                    <p class="text-[11px] text-gray-500">05/12/2025 · Sede Central</p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <div class="mt-0.5 h-8 w-8 rounded-full bg-slate-50 border border-slate-200 text-slate-700 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-ban"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-sm font-semibold">Cancelado</p>
+                    <p class="text-xs text-gray-600">Jubilacion</p>
+                    <p class="text-[11px] text-gray-500">20/11/2025 · Sede Norte</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <!-- UI.TUR.02.06 · Modal de Cancelación / Ausente -->
+          <div class="relative mt-4 rounded-2xl border border-dashed border-red-200 bg-red-50/40 p-4">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-red-700 flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-xs"></i>
+              UI.TUR.02.06 · Modal de Cancelación / Ausente (se dispara desde el botón “AUSENTE”)
+            </p>
+            <div class="mt-3 relative bg-white rounded-2xl shadow-lg border border-gray-200 max-w-lg">
+              <div class="px-5 pt-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Confirmar ausencia</p>
+                  <p class="text-xs text-gray-500">Marca al afiliado como ausente y libera el turno.</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600 text-sm" aria-label="Cerrar">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <div class="px-5 py-4 space-y-3 text-sm">
+                <p class="text-gray-700">
+                  ¿Desea marcar a <span class="font-semibold">Ana Gomez</span> como <span class="font-semibold text-red-600">Ausente</span>?
+                </p>
+                <div class="space-y-2">
+                  <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide">Motivo</label>
+                  <select class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <option>Seleccione…</option>
+                    <option>Se retiró</option>
+                    <option>No responde llamado</option>
+                    <option>Error de carga</option>
+                  </select>
+                </div>
+                <p class="text-xs text-gray-500">
+                  El turno pasará a historial con estado “Ausente” y se registrará el motivo seleccionado.
+                </p>
+              </div>
+              <div class="px-5 py-3 bg-gray-50 border-t border-gray-100 flex flex-wrap justify-end gap-2 text-xs">
+                <button class="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100">
+                  Volver
+                </button>
+                <button class="inline-flex items-center gap-2 rounded-md bg-red-600 px-3.5 py-1.5 font-semibold text-white shadow-sm hover:bg-red-700">
+                  <i class="fa-solid fa-user-xmark text-[11px]"></i>
+                  Confirmar ausencia
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA 3: Visor TV Sala (UI.TUR.02.03) -->
+        <section id="view-tv" class="tab-view hidden space-y-5">
+          <div class="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Visor TV Sala</p>
+              <h2 class="mt-1 text-lg font-semibold">Pantalla pública de llamado</h2>
+              <p class="text-sm text-gray-500 max-w-3xl">
+                Diseño de alto contraste para sala de espera: nombre + puesto, con historial de llamados.
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600">
+                <i class="fa-solid fa-volume-high"></i>
+                Sonido: On (simulado)
+              </span>
+            </div>
+          </div>
+
+          <div class="rounded-3xl overflow-hidden border border-gray-200 shadow-sm bg-[#0B1220]">
+            <div class="p-8 md:p-12 min-h-[520px] flex flex-col">
+              <div class="flex items-center justify-between text-white/70 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                  En vivo · Llamando ahora
+                </div>
+                <div class="inline-flex items-center gap-2">
+                  <i class="fa-regular fa-clock"></i>
+                  09:16
+                </div>
+              </div>
+
+              <div class="flex-1 flex flex-col items-center justify-center text-center px-4">
+                <p class="text-white/70 text-sm uppercase tracking-widest font-semibold">Siguiente</p>
+                <h3 class="mt-3 text-4xl md:text-6xl font-extrabold text-white">ANA GOMEZ</h3>
+
+                <div class="mt-6 inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-6 py-4 shadow-lg">
+                  <i class="fa-solid fa-location-dot text-white/90"></i>
+                  <div class="text-left">
+                    <p class="text-white/80 text-xs uppercase tracking-wider font-semibold">Diríjase a</p>
+                    <p class="text-white text-2xl md:text-3xl font-extrabold">PUESTO 05</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-white/10 pt-4 pb-3 px-2">
+                <p class="text-white/70 text-xs font-semibold uppercase tracking-widest">Anteriores</p>
+                <div class="mt-2 flex flex-wrap gap-2 text-xs text-white/80">
+                  <span class="rounded-full bg-white/10 px-3 py-1">Juan Perez · Puesto 02</span>
+                  <span class="rounded-full bg-white/10 px-3 py-1">Luis Rivas · Puesto 01</span>
+                  <span class="rounded-full bg-white/10 px-3 py-1">María Sosa · Puesto 03</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA 4: Tótem (UI.TUR.02.05) -->
+        <section id="view-totem" class="tab-view hidden space-y-5">
+          <div class="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Tótem</p>
+              <h2 class="mt-1 text-lg font-semibold">Auto check-in</h2>
+              <p class="text-sm text-gray-500 max-w-3xl">
+                Interfaz táctil vertical: entrada por QR o por DNI (teclado). Ideal para pantalla 16:9 rotada o kiosco.
+              </p>
+            </div>
+            <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600">
+              <i class="fa-solid fa-hand-pointer"></i>
+              Modo táctil (simulado)
+            </span>
+          </div>
+
+          <div class="mx-auto w-full max-w-5xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Estado de reposo -->
+              <div class="rounded-[2.25rem] border border-gray-200 bg-white shadow-sm overflow-hidden">
+                <div class="px-6 pt-6 pb-4 border-b border-gray-100 bg-gray-50">
+                  <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">CAAITBA</p>
+                  <p class="mt-1 text-xl font-semibold text-gray-900">Bienvenido/a</p>
+                  <p class="text-sm text-gray-500">Seleccione una opción para registrarse.</p>
+                </div>
+
+                <div class="p-6 space-y-4">
+                  <button class="w-full rounded-2xl bg-blue-600 text-white px-5 py-5 text-left shadow-sm hover:bg-blue-700">
+                    <div class="flex items-center gap-4">
+                      <div class="h-14 w-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                        <i class="fa-solid fa-qrcode text-3xl"></i>
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-lg font-semibold">Tengo Turno (QR)</p>
+                        <p class="text-sm text-white/80">Escanear código para validar tu llegada.</p>
+                      </div>
+                      <i class="fa-solid fa-chevron-right text-white/80"></i>
+                    </div>
+                  </button>
+
+                  <button class="w-full rounded-2xl border-2 border-gray-200 bg-white px-5 py-5 text-left shadow-sm hover:bg-gray-50">
+                    <div class="flex items-center gap-4">
+                      <div class="h-14 w-14 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-700">
+                        <i class="fa-solid fa-keyboard text-3xl"></i>
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-lg font-semibold text-gray-900">Sin Turno (DNI)</p>
+                        <p class="text-sm text-gray-500">Usar teclado en pantalla para solicitar atención.</p>
+                      </div>
+                      <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                    </div>
+                  </button>
+
+                  <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
+                    <p class="font-semibold text-gray-900">Mensaje de bienvenida</p>
+                    <p class="mt-1">Toque una opción para comenzar. Si tiene dudas, consulte al personal de recepción.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Estado de feedback / comprobante -->
+              <div class="rounded-[2.25rem] border border-gray-200 bg-white shadow-sm overflow-hidden">
+                <div class="px-6 pt-6 pb-4 border-b border-gray-100 bg-blue-50">
+                  <p class="text-xs text-blue-700 uppercase tracking-widest font-semibold">Confirmación</p>
+                  <p class="mt-1 text-xl font-semibold text-gray-900">¡Bienvenido Juan!</p>
+                  <p class="text-sm text-gray-600">Tu registro fue exitoso.</p>
+                </div>
+
+                <div class="p-6 space-y-6">
+                  <div class="flex flex-col items-center text-center gap-3">
+                    <div class="h-16 w-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                      <i class="fa-solid fa-check text-2xl"></i>
+                    </div>
+                    <div>
+                      <p class="text-lg font-semibold text-gray-900">
+                        ¡Bienvenido Juan Perez!
+                      </p>
+                      <p class="mt-1 text-sm text-gray-600">
+                        Aguarde en sala
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600 space-y-2">
+                    <p><span class="font-semibold text-gray-900">Detalle de turno:</span></p>
+                    <p>Trámite: <span class="font-semibold">Jubilación</span></p>
+                    <p>Sede: <span class="font-semibold">Central</span></p>
+                    <p>Horario estimado: <span class="font-semibold">10:30 hs</span></p>
+                  </div>
+
+                  <p class="text-xs text-gray-500 text-center">
+                    Este estado se muestra unos segundos y luego vuelve automáticamente a la pantalla de reposo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const views = document.querySelectorAll('.tab-view');
+
+        tabButtons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-target');
+
+            tabButtons.forEach((b) => {
+              if (b === btn) {
+                b.classList.add('border-blue-600', 'text-blue-600');
+                b.classList.remove('border-transparent', 'text-gray-500');
+              } else {
+                b.classList.remove('border-blue-600', 'text-blue-600');
+                if (!b.classList.contains('border-transparent')) b.classList.add('border-transparent');
+                if (!b.classList.contains('text-gray-500')) b.classList.add('text-gray-500');
+              }
+            });
+
+            views.forEach((view) => {
+              if (view.id === targetId) view.classList.remove('hidden');
+              else view.classList.add('hidden');
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
+

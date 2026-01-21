@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAAITBA · Derechohabiente (Prototipo)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: "Inter", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-900">
+  <div class="min-h-screen flex flex-col items-center py-10 px-4">
+    <!-- Encabezado -->
+    <header class="w-full max-w-5xl mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-12 w-12 rounded-xl bg-blue-700 text-white flex items-center justify-center font-semibold shadow-sm">
+          CA
+        </div>
+        <div>
+          <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500">CAAITBA</p>
+          <p class="text-lg font-semibold text-gray-900">Derechohabiente · Solicitud de Beneficio</p>
+        </div>
+      </div>
+      <div class="text-xs text-gray-500 bg-white border border-gray-200 rounded-full px-3 py-1 shadow-sm">
+        Estilo “Government Clean”
+      </div>
+    </header>
+
+    <main class="w-full max-w-5xl space-y-6">
+      <!-- Paso 1: Identificación -->
+      <section id="view-step1" class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 space-y-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-blue-700 uppercase tracking-wide">UI.DH.01.1</p>
+            <h1 class="text-2xl font-semibold text-gray-900">Paso 1: Validación de Identidad</h1>
+            <p class="mt-1 text-sm text-gray-600">Ingresá los datos para validar al titular fallecido y tu identidad como solicitante.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Datos del Causante -->
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <p class="text-sm font-semibold text-gray-800 mb-3">Datos del Causante</p>
+            <label class="block text-sm font-medium text-gray-700 mb-2">DNI del Titular Fallecido</label>
+            <input
+              type="text"
+              placeholder="Ej: 23.456.789"
+              class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+            />
+          </div>
+
+          <!-- Datos del Solicitante -->
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-4">
+            <p class="text-sm font-semibold text-gray-800">Datos del Solicitante</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Tu DNI</label>
+                <input
+                  type="text"
+                  placeholder="Ej: 30.123.456"
+                  class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Sexo</label>
+                <select class="w-full rounded-lg border border-gray-300 bg-white px-3 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                  <option>Femenino</option>
+                  <option>Masculino</option>
+                  <option>X</option>
+                </select>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="text-sm font-medium text-gray-700">Nro. de Trámite</label>
+                  <button
+                    type="button"
+                    class="text-xs text-blue-600 hover:text-blue-700 flex items-center gap-1"
+                    title="Ver dónde ubicarlo"
+                  >
+                    <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">?</span>
+                    Ver dónde ubicarlo
+                  </button>
+                </div>
+                <input
+                  type="text"
+                  maxlength="11"
+                  placeholder="11 dígitos"
+                  class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3">
+          <button id="btn-validate" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 transition-all">
+            <span id="btn-validate-text">Validar Identidad</span>
+            <span id="btn-validate-spinner" class="hidden h-4 w-4 border-2 border-white/60 border-t-transparent rounded-full animate-spin"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Paso 2: Documentación -->
+      <section id="view-step2" class="hidden bg-white rounded-2xl shadow-sm border border-gray-200 p-6 space-y-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-emerald-600 uppercase tracking-wide flex items-center gap-2">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 text-sm">✓</span>
+              Identidad Validada: <span class="font-semibold text-gray-900">Juan Perez</span>
+            </p>
+            <h2 class="text-xl font-semibold text-gray-900 mt-1">Paso 2: Documentación</h2>
+            <p class="text-sm text-gray-600">Cargá los documentos obligatorios y tus datos de contacto para generar el expediente.</p>
+          </div>
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-4">
+          <p class="text-sm font-semibold text-gray-800">Datos de Contacto</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email (obligatorio)</label>
+              <input type="email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600" placeholder="nombre@correo.com" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Repetir Email</label>
+              <input type="email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600" placeholder="Repite tu email" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Celular</label>
+              <input type="tel" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600" placeholder="+54 9 11 1234-5678" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Vínculo</label>
+              <select id="vinculo-select" class="w-full rounded-lg border border-gray-300 bg-white px-3 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                <option>Cónyuge</option>
+                <option>Hijo</option>
+                <option>Conviviente</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Uploaders -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="rounded-xl border-2 border-dashed border-gray-300 bg-white p-4 flex flex-col gap-3 text-sm text-gray-600">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold text-gray-800">Partida de Defunción</p>
+              <span class="text-xs text-emerald-700 bg-emerald-50 px-2 py-1 rounded-full font-semibold">Obligatorio</span>
+            </div>
+            <div class="flex-1 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
+              <p class="text-xs text-gray-500">Arrastrá tu archivo aquí o hacé click</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl border-2 border-dashed border-gray-300 bg-white p-4 flex flex-col gap-3 text-sm text-gray-600">
+            <div class="flex items-center justify-between">
+              <p id="label-vinculo" class="font-semibold text-gray-800">Prueba de Vínculo (Cónyuge)</p>
+              <span class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-full font-semibold">Requerido</span>
+            </div>
+            <div class="flex-1 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
+              <p class="text-xs text-gray-500">Arrastrá tu archivo aquí o hacé click</p>
+              <p class="mt-2 text-[11px] text-gray-500">Ej: Partida de Matrimonio, Unión convivencial, etc.</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl border-2 border-dashed border-gray-300 bg-white p-4 flex flex-col gap-3 text-sm text-gray-600">
+            <p class="font-semibold text-gray-800">DNI Frente y Dorso</p>
+            <div class="flex-1 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
+              <p class="text-xs text-gray-500">Arrastrá tu archivo aquí o hacé click</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <label class="inline-flex items-start gap-3 text-sm text-gray-700">
+            <input type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-blue-700 focus:ring-blue-600" />
+            <span>Declaro bajo juramento que los datos son veraces y la documentación corresponde al vínculo declarado.</span>
+          </label>
+          <div class="flex items-center justify-end gap-3">
+            <button id="btn-confirm" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 transition-all">
+              Confirmar y Generar Expediente
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 3: Éxito -->
+      <section id="view-step3" class="hidden bg-white rounded-2xl shadow-sm border border-gray-200 p-10 flex flex-col items-center text-center gap-4">
+        <div class="h-20 w-20 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shadow-sm">
+          <span class="text-4xl">✓</span>
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900">¡Solicitud Iniciada Correctamente!</h3>
+        <div class="rounded-lg bg-gray-50 border border-gray-200 px-4 py-3 font-mono text-sm text-gray-900">
+          Expediente N°: EX-2026-12345678-CAAITBA-ME#SA
+        </div>
+        <p class="text-sm text-gray-600 max-w-xl">
+          Se ha enviado un correo a <span class="font-semibold text-gray-900">tu-email@correo.com</span> con los pasos para el seguimiento.
+        </p>
+        <button id="btn-back-home" class="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50">
+          Volver al Inicio
+        </button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const step1 = document.getElementById('view-step1');
+      const step2 = document.getElementById('view-step2');
+      const step3 = document.getElementById('view-step3');
+      const btnValidate = document.getElementById('btn-validate');
+      const btnValidateText = document.getElementById('btn-validate-text');
+      const btnValidateSpinner = document.getElementById('btn-validate-spinner');
+      const btnConfirm = document.getElementById('btn-confirm');
+      const btnBackHome = document.getElementById('btn-back-home');
+      const vinculoSelect = document.getElementById('vinculo-select');
+      const labelVinculo = document.getElementById('label-vinculo');
+
+      if (vinculoSelect && labelVinculo) {
+        vinculoSelect.addEventListener('change', () => {
+          const val = vinculoSelect.value || 'Vínculo';
+          labelVinculo.textContent = `Prueba de Vínculo (${val})`;
+        });
+      }
+
+      if (btnValidate) {
+        btnValidate.addEventListener('click', () => {
+          btnValidate.disabled = true;
+          btnValidateText.textContent = 'Validando...';
+          btnValidateSpinner.classList.remove('hidden');
+
+          setTimeout(() => {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+          }, 2000);
+        });
+      }
+
+      if (btnConfirm) {
+        btnConfirm.addEventListener('click', () => {
+          step2.classList.add('hidden');
+          step3.classList.remove('hidden');
+        });
+      }
+
+      if (btnBackHome) {
+        btnBackHome.addEventListener('click', () => {
+          step3.classList.add('hidden');
+          step1.classList.remove('hidden');
+          btnValidate.disabled = false;
+          btnValidateText.textContent = 'Validar Identidad';
+          btnValidateSpinner.classList.add('hidden');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

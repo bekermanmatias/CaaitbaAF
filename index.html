@@ -56,6 +56,241 @@
 
             <div class="flex-1 overflow-y-auto">
               <nav class="py-2 text-sm">
+                <!-- Caso de Uso SA.AF.CMAO (Renuncia / Opciones) -->
+                <button
+                  type="button"
+                  class="group-toggle flex w-full items-center justify-between px-4 pt-2 pb-1 text-[11px] font-semibold text-slate-500 uppercase tracking-wide hover:bg-slate-50"
+                  data-target="group-ren"
+                  aria-expanded="true"
+                >
+                  <span>CU-SA.AF.CMAO · Renuncia Aportes</span>
+                  <span class="text-xs" data-chevron="group-ren">▾</span>
+                </button>
+                <div id="group-ren" class="space-y-1">
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-ren"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-purple-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      REN
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.REN · Renuncia al Cómputo
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Grilla selección · Confirmación · Boleta de pago
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-opt04"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      04
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AF.CMAO.04 · Evidencias de Impacto
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Estado aceptado, cuenta individual con estados especiales y notificación de acreditación.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-opt50"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      03
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AF.CMAO.03 · Opción Pago 50%
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Selección de año, términos legales, boleta e interrupciones por capital/abogado.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-cmao02"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-sky-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.CMAO.02 · Consulta / Notificación
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Cuenta individual sin deuda · Email de confirmación al afiliado.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-exi"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-amber-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      EXI
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU · Eximición CMAO (Dependencia)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Selección de año, carga de adjuntos + DDJJ y confirmación en revisión.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-bo-exi"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-slate-900 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      06
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AF.CMAO.06 · Autorizar Eximición
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Backoffice: Bandeja de solicitudes y detalle de resolución.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-exi03"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      EXI3
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.EXI.03 · Post Aprobación (Afiliado)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Vista afiliado: Estado aprobado, boleta habilitada y acciones de pago.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-cmao08"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      08
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AF.CMAO.08 · Impacto de Pago
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Trámite finalizado: Eximición aplicada y notificación de cierre.
+                      </p>
+                    </div>
+                  </button>
+                </div>
+
+                <!-- CU-SA.AF.CMAO.02 · Impacto Post-Renuncia -->
+                <button
+                  type="button"
+                  class="group-toggle flex w-full items-center justify-between px-4 pt-2 pb-1 text-[11px] font-semibold text-slate-500 uppercase tracking-wide hover:bg-slate-50"
+                  data-target="group-cmao02-impacto"
+                  aria-expanded="true"
+                >
+                  <span>CU-SA.AF.CMAO.02 · Impacto Post-Renuncia</span>
+                  <span class="text-xs" data-chevron="group-cmao02-impacto">▾</span>
+                </button>
+                <div id="group-cmao02-impacto" class="space-y-1">
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-cc01-detalle"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      CC.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.CC.01 · Detalle de Cuenta Corriente (Vista Afiliado)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Impacto post-renuncia: Estado RENUNCIA AL CÓMPUTO, Deuda $0, sin botón Pagar.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-mail-renuncia"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      MAIL
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        MAIL_RENUNCIA_CONFIRMADA · Email de Confirmación
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Template TPL-REN-OK-01: Acreditación de pago exitosa, renuncia aceptada, link portal.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tes-monitor"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      TES
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TES.MONITOR · Monitor de Pagos (Backoffice)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Backoffice: Grilla webhooks, estados PROCESADO_OK/ANOMALIA, detalle anomalías, log técnico.
+                      </p>
+                    </div>
+                  </button>
+                </div>
+
                 <!-- Caso de Uso DH -->
                 <button
                   type="button"
@@ -203,6 +438,539 @@
                   </button>
                 </div>
 
+                <!-- Grupo ATP.01 · Consola de Llamado (Bandeja de Atención) -->
+                <button
+                  type="button"
+                  class="group-toggle flex w-full items-center justify-between px-4 pt-3 pb-1 text-[11px] font-semibold text-slate-500 uppercase tracking-wide hover:bg-slate-50"
+                  data-target="group-atp01"
+                  aria-expanded="true"
+                >
+                  <span>UI.ATP.01 · Consola de Llamado (Bandeja de Atención)</span>
+                  <span class="text-xs" data-chevron="group-atp01">▾</span>
+                </button>
+                <div id="group-atp01" class="space-y-1">
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-atp0101-consola"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-teal-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      01.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.ATP.01.01 · Consola de Llamado (Bandeja de Atención)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Box, turno activo (código, afiliado, trámite, crono), cola Próximos en Espera, Llamar / Re-Llamar / Iniciar / Ausente / Derivar.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-atp0102-modal"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      01.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.ATP.01.02 · Modal de Derivación
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Sector destino, motivo, Mantener prioridad, Confirmar derivación / Cancelar.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-atp0103-alerta"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-amber-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      01.03
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.ATP.01.03 · Alerta de Ausencia
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Confirmación: ¿Afiliado no en sala? Sí, Marcar Ausente / Esperar un poco más.
+                      </p>
+                    </div>
+                  </button>
+                </div>
+
+                <!-- Grupo cu-turnos · Bandeja de Atención -->
+                <button
+                  type="button"
+                  class="group-toggle flex w-full items-center justify-between px-4 pt-3 pb-1 text-[11px] font-semibold text-slate-500 uppercase tracking-wide hover:bg-slate-50"
+                  data-target="group-cu-turnos"
+                  aria-expanded="true"
+                >
+                  <span>CU Turnos · Bandeja de Atención</span>
+                  <span class="text-xs" data-chevron="group-cu-turnos">▾</span>
+                </button>
+                <div id="group-cu-turnos" class="space-y-1">
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0101-bandeja"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-teal-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      01.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.01.01 · Dashboard "Mis Turnos"
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Afiliado: próximo turno, QR, historial, Solicitar/Reprogramar/Cancelar, modal cancelación.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0201-calendario"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-amber-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      02.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.02.01 · Calendario Global de Reservas
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Planner mensual, semáforo ocupación, detalle por día, Bloquear Día.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0401-reservar"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      04.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.04 · Reservar Turno (Paso 1)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Configuración: Sede + Trámite. Buscar disponibilidad.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0402-reservar"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-sky-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      04.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.04 · Reservar Turno (Paso 2)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Selección de fecha y horario (slots).
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0403-reservar"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      04.03
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.04 · Reservar Turno (Paso 3)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Confirmación y éxito con resumen + QR.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0501-reprogramar"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-purple-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      05.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.05 · Reprogramar Turno (Confirmación)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Comparación: Turno a liberar vs Nuevo turno. Confirmar cambio.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0502-reprogramar"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-purple-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      05.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.05 · Reprogramar Turno (Éxito)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Éxito de reprogramación con nuevo código y QR actualizado.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0601-anular"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-red-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      06.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.06 · Anular Turno
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Modal bloqueante de confirmación: advertencia irreversible, mantener vs cancelar.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0701-consola"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-sky-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      07.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.07 · Consola de Recepción
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Ingreso de turnos: búsqueda DNI/QR, tarjeta de turno, semáforo estado, Confirmar ingreso.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0702-totem"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      07.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.07.02 · Tótem de Auto-atención (Modo Kiosco)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Pantalla táctil: reposo, escáner/ingreso manual, confirmación, éxito (retire ticket).
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0703-dni"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      07.03
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.07.03 · Ingreso Manual de DNI (Teclado)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Teclado numérico grande, visor DNI, Borrar / Buscar Turno / Volver.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0704-confirmacion"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      07.04
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.07.04 · Confirmación de Identidad
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Handshake: nombre, detalle turno, ¿Deseas anunciarte? Sí / No soy yo.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0705-ticket"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      07.05
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.07.05 · Ticket Digital (Paperless)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Código gigante, instrucción sala de espera, barra tiempo, Finalizar.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0706-error"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-amber-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      07.06
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.07.06 · Error / Derivación
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        No pudimos procesar tu ingreso. Derivación a Mesa de Entradas, [Entendido].
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0801-masiva"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-amber-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      08.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.08 · Reprogramación masiva
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Contingencias: filtros origen, grilla afectados, acción destino, Simular / Ejecutar.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur0901-anulacion"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-red-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      09.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.09 · Anulación masiva
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Modo cancelación: misma consola, tarjeta Cancelar, sin fecha destino, Confirmar cancelación.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur1001-tablero"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      10.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.10 · Tablero de Gestión de Agendas
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Calendario mensual/semanal, filtros Sede / Sector, días coloreados (habilitado / sin agenda / feriado), Nueva Agenda, Gestionar Feriados.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur1002-editor"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      10.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        CU-SA.AT.TUR.10 · Editor de Reglas de Agenda (Generador)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Vigencia, días de atención, bandas horarias, duración slot, cupos; Simular y Generar agenda.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur1101-monitor"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-slate-700 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      11.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.11.01 · Monitor de Sala (Grilla en Vivo)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        TV 40"+: fondo oscuro, logo + reloj, grilla TURNO/PUESTO, fila destacada, estado conexión.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-tur1102-placa"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-slate-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      11.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.11.02 · Placa Sin Turnos (Estado Vacío)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Cola vacía: Bienvenidos a CAAITBA. Por favor aguarde su llamado.
+                      </p>
+                    </div>
+                  </button>
+                </div>
+
+                <!-- Grupo TUR.INT.12 · Historial de Turnos -->
+                <button
+                  type="button"
+                  class="group-toggle flex w-full items-center justify-between px-4 pt-3 pb-1 text-[11px] font-semibold text-slate-500 uppercase tracking-wide hover:bg-slate-50"
+                  data-target="group-turint12"
+                  aria-expanded="true"
+                >
+                  <span>UI.TUR.INT.12 · Historial de Turnos</span>
+                  <span class="text-xs" data-chevron="group-turint12">▾</span>
+                </button>
+                <div id="group-turint12" class="space-y-1">
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-turint1201-consola"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-purple-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      12.01
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.INT.12.01 · Consola de Historial de Turnos
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Búsqueda DNI, tarjeta afiliado, grilla historial con badges estado, Ver Detalle / Anular.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-turint1202-detalle"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-purple-500 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      12.02
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.INT.12.02 · Detalle del Turno (Modal)
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Código, fecha solicitud, canal origen, operador, hora llegada, observaciones, Ver Auditoría / Anular.
+                      </p>
+                    </div>
+                  </button>
+                  <button
+                    class="tab-trigger flex w-full items-start gap-3 px-4 py-3 text-left transition-all border-l-2
+                           border-transparent hover:bg-slate-50"
+                    data-tab="tab-turint1203-auditoria"
+                  >
+                    <div
+                      class="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-[11px] font-semibold text-white shadow-sm"
+                    >
+                      12.03
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-slate-900">
+                        UI.TUR.INT.12.03 · Registro de Auditoría del Turno
+                      </p>
+                      <p class="text-[11px] text-slate-500">
+                        Trazabilidad: fecha/hora, usuario/actor, evento, estado resultante, detalle. Volver / Cerrar Todo.
+                      </p>
+                    </div>
+                  </button>
+                </div>
+
                 <!-- Grupo TUR.03 (desplegable) -->
                 <button
                   type="button"
@@ -335,6 +1103,127 @@
 
             <!-- Canvas scrollable -->
             <div class="flex-1 overflow-auto pt-4">
+              <!-- TAB REN: Renuncia al Cómputo de Aportes (embebido) -->
+              <div id="tab-ren" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="ren-prototipo.html"
+                    title="Renuncia al Cómputo de Aportes"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB OPT50: Opción de Pago 50% CMAO (embebido) -->
+              <div id="tab-opt50" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="opt50-prototipo.html"
+                    title="CU-SA.AF.CMAO.03 · Opción de Pago 50% CMAO"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB CMAO.02: Consulta / Notificación (embebido) -->
+              <div id="tab-cmao02" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cmao02-prototipo.html"
+                    title="CMAO.02 · Consulta y Notificaciones"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB OPT04: Evidencias de Impacto (embebido) -->
+              <div id="tab-opt04" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="opt-status-prototipo.html"
+                    title="CU-SA.AF.CMAO.04 · Evidencias de Impacto (Opción 50%)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB EXI: Eximición CMAO (embebido) -->
+              <div id="tab-exi" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="exi-prototipo.html"
+                    title="Eximición CMAO - Solicitud y Validación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB BO-EXI: Backoffice Autorización Eximición (embebido) -->
+              <div id="tab-bo-exi" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="bo-exi-prototipo.html"
+                    title="CU-SA.AF.CMAO.06 · Autorizar Solicitud de Eximición"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB EXI03: Post Aprobación (Vista Afiliado) -->
+              <div id="tab-exi03" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="exi03-post-aprobacion.html"
+                    title="UI.EXI.03 · Detalle de Solicitud (Post Aprobación)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB CMAO08: Impacto de Pago (Trámite Finalizado) -->
+              <div id="tab-cmao08" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cmao08-prototipo.html"
+                    title="CU-SA.AF.CMAO.08 · Aplicación de Eximición (Impacto de Pago)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.CC.01: Detalle de Cuenta Corriente (Vista Afiliado) -->
+              <div id="tab-cc01-detalle" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cc01-detalle-cuenta-corriente.html"
+                    title="UI.CC.01 · Detalle de Cuenta Corriente (Vista Afiliado)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB MAIL_RENUNCIA_CONFIRMADA: Email de Confirmación -->
+              <div id="tab-mail-renuncia" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="mail-renuncia-confirmada.html"
+                    title="MAIL_RENUNCIA_CONFIRMADA · Email de Confirmación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TES.MONITOR: Monitor de Pagos (Backoffice) -->
+              <div id="tab-tes-monitor" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="tes-monitor-transacciones.html"
+                    title="UI.TES.MONITOR · Monitor de Pagos (Backoffice)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
               <!-- TAB DH: Solicitud Derechohabiente (embebido) -->
               <div id="tab-dh01" class="tab-panel hidden h-full">
                 <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
@@ -385,6 +1274,292 @@
                   <iframe
                     src="tur02-prototipo.html"
                     title="Atención Presencial - TUR.02"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.01.01: Bandeja de Atención (embebido) -->
+              <div id="tab-tur0101-bandeja" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0101-bandeja-atencion.html"
+                    title="UI.TUR.01.01 – Dashboard Mis Turnos (Afiliado)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.02.01: Calendario Global de Reservas (embebido) -->
+              <div id="tab-tur0201-calendario" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0201-calendario-reservas.html"
+                    title="Calendario Global de Reservas"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.04.01: Reservar Turno (Paso 1) -->
+              <div id="tab-tur0401-reservar" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0401-reservar-paso1.html"
+                    title="Reservar Turno - Paso 1"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.04.02: Reservar Turno (Paso 2) -->
+              <div id="tab-tur0402-reservar" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0402-reservar-paso2.html"
+                    title="Reservar Turno - Paso 2"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.04.03: Reservar Turno (Paso 3) -->
+              <div id="tab-tur0403-reservar" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0403-reservar-paso3.html"
+                    title="Reservar Turno - Paso 3"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.05.01: Reprogramar Turno (Confirmación) -->
+              <div id="tab-tur0501-reprogramar" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0501-reprogramar-confirmacion.html"
+                    title="Reprogramar Turno - Confirmación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.05.02: Reprogramar Turno (Éxito) -->
+              <div id="tab-tur0502-reprogramar" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0502-reprogramar-exito.html"
+                    title="Reprogramar Turno - Éxito"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.06.01: Anular Turno (Modal) -->
+              <div id="tab-tur0601-anular" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0601-anular-modal.html"
+                    title="Anular Turno - Modal de Confirmación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.07.01: Consola de Recepción -->
+              <div id="tab-tur0701-consola" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0701-consola-recepcion.html"
+                    title="Consola de Recepción - Ingreso de Turnos"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.07.02: Tótem de Auto-atención (Modo Kiosco) -->
+              <div id="tab-tur0702-totem" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0702-totem-kiosco.html"
+                    title="Tótem de Auto-atención (Modo Kiosco)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.07.03: Ingreso Manual de DNI (Teclado) -->
+              <div id="tab-tur0703-dni" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0703-ingreso-manual-dni.html"
+                    title="Ingreso Manual de DNI (Teclado)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.07.04: Confirmación de Identidad -->
+              <div id="tab-tur0704-confirmacion" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0704-confirmacion-identidad.html"
+                    title="Confirmación de Identidad"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.07.05: Ticket Digital (Paperless) -->
+              <div id="tab-tur0705-ticket" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0705-ticket-digital.html"
+                    title="Ticket Digital (Paperless)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.07.06: Error / Derivación -->
+              <div id="tab-tur0706-error" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0706-error-derivacion.html"
+                    title="Error / Derivación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.ATP.01.01: Consola de Llamado (Bandeja de Atención) -->
+              <div id="tab-atp0101-consola" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/atp0101-consola-llamado.html"
+                    title="Consola de Llamado (Bandeja de Atención)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.ATP.01.02: Modal de Derivación -->
+              <div id="tab-atp0102-modal" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/atp0102-modal-derivacion.html"
+                    title="Modal de Derivación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.ATP.01.03: Alerta de Ausencia -->
+              <div id="tab-atp0103-alerta" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/atp0103-alerta-ausencia.html"
+                    title="Alerta de Ausencia (Confirmación)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.08.01: Reprogramación masiva -->
+              <div id="tab-tur0801-masiva" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0801-reprogramacion-masiva.html"
+                    title="Reprogramación masiva - Contingencias"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.09.01: Anulación masiva -->
+              <div id="tab-tur0901-anulacion" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur0901-anulacion-masiva.html"
+                    title="Anulación masiva - Modo Cancelación"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.10.01: Tablero de Gestión de Agendas -->
+              <div id="tab-tur1001-tablero" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur1001-tablero-agendas.html"
+                    title="Tablero de Gestión de Agendas"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.10.02: Editor de Reglas de Agenda -->
+              <div id="tab-tur1002-editor" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/tur1002-editor-reglas-agenda.html"
+                    title="Editor de Reglas de Agenda (Generador)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.11.01: Monitor de Sala (Grilla en Vivo) -->
+              <div id="tab-tur1101-monitor" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-900">
+                  <iframe
+                    src="cu-turnos/tur1101-monitor-sala.html"
+                    title="Monitor de Sala (Grilla en Vivo)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.11.02: Placa Sin Turnos (Estado Vacío) -->
+              <div id="tab-tur1102-placa" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-900">
+                  <iframe
+                    src="cu-turnos/tur1102-placa-sin-turnos.html"
+                    title="Placa Sin Turnos (Estado Vacío)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.INT.12.01: Consola de Historial de Turnos -->
+              <div id="tab-turint1201-consola" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/turint1201-consola-historial.html"
+                    title="Consola de Historial de Turnos"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.INT.12.02: Detalle del Turno (Modal) -->
+              <div id="tab-turint1202-detalle" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/turint1202-detalle-turno.html"
+                    title="Detalle del Turno (Modal)"
+                    class="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- TAB UI.TUR.INT.12.03: Registro de Auditoría del Turno -->
+              <div id="tab-turint1203-auditoria" class="tab-panel hidden h-full">
+                <div class="h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="cu-turnos/turint1203-auditoria.html"
+                    title="Registro de Auditoría del Turno"
                     class="w-full h-full border-0"
                   ></iframe>
                 </div>
@@ -1387,11 +2562,48 @@
       const titleEl = document.getElementById('current-screen-title');
 
       const titles = {
+        'tab-ren': 'UI.REN · Renuncia al Cómputo de Aportes (Grilla / Confirmación / Boleta)',
+        'tab-opt50': 'CU-SA.AF.CMAO.03 · Opción de Pago 50% CMAO',
+        'tab-cmao02': 'UI.CMAO.02 · Cuenta Individual y Notificación por Email',
+        'tab-opt04': 'CU-SA.AF.CMAO.04 · Evidencias de Impacto (Estado Aceptado / Cuenta / Email)',
+        'tab-exi': 'UI.EXI · Eximición CMAO (Selección / Adjuntos + DDJJ / En revisión)',
+        'tab-bo-exi': 'CU-SA.AF.CMAO.06 · Autorizar Eximición (Bandeja / Detalle)',
+        'tab-exi03': 'UI.EXI.03 · Post Aprobación (Estado Aprobado / Boleta Habilitada)',
+        'tab-cmao08': 'CU-SA.AF.CMAO.08 · Impacto de Pago (Trámite Finalizado / Email Cierre)',
+        'tab-cc01-detalle': 'UI.CC.01 · Detalle de Cuenta Corriente (Vista Afiliado - Impacto Post-Renuncia)',
+        'tab-mail-renuncia': 'MAIL_RENUNCIA_CONFIRMADA · Email de Confirmación (TPL-REN-OK-01)',
+        'tab-tes-monitor': 'UI.TES.MONITOR · Monitor de Pagos (Backoffice)',
         'tab-dh01': 'UI.DH.01 · Solicitud Derechohabiente (Paso 1-3)',
         'tab-dh02': 'UI.DH.02 · Gestión Manual (Bandeja / Detalle / Modales)',
         'tab-tur00-publico': 'TUR.00 · Acceso Público (Landing e Invitados)',
         'tab-tur01-portal': 'TUR.01 · Portal de Autogestión (Afiliado)',
         'tab-tur02-prototipo': 'TUR.02 · Atención Presencial (Recepción / Consola / TV / Tótem)',
+        'tab-tur0101-bandeja': 'UI.TUR.01.01 · Dashboard "Mis Turnos" (Afiliado)',
+        'tab-tur0201-calendario': 'UI.TUR.02.01 · Calendario Global de Reservas',
+        'tab-tur0401-reservar': 'CU-SA.AT.TUR.04 · Reservar Turno (Paso 1: Configuración)',
+        'tab-tur0402-reservar': 'CU-SA.AT.TUR.04 · Reservar Turno (Paso 2: Fecha y Hora)',
+        'tab-tur0403-reservar': 'CU-SA.AT.TUR.04 · Reservar Turno (Paso 3: Éxito)',
+        'tab-tur0501-reprogramar': 'CU-SA.AT.TUR.05 · Reprogramar Turno (Confirmación)',
+        'tab-tur0502-reprogramar': 'CU-SA.AT.TUR.05 · Reprogramar Turno (Éxito)',
+        'tab-tur0601-anular': 'CU-SA.AT.TUR.06 · Anular Turno (Modal de Confirmación)',
+        'tab-tur0701-consola': 'CU-SA.AT.TUR.07 · Consola de Recepción (Ingreso de Turnos)',
+        'tab-tur0702-totem': 'UI.TUR.07.02 · Tótem de Auto-atención (Modo Kiosco)',
+        'tab-tur0703-dni': 'UI.TUR.07.03 · Ingreso Manual de DNI (Teclado)',
+        'tab-tur0704-confirmacion': 'UI.TUR.07.04 · Confirmación de Identidad',
+        'tab-tur0705-ticket': 'UI.TUR.07.05 · Ticket Digital (Paperless)',
+        'tab-tur0706-error': 'UI.TUR.07.06 · Error / Derivación',
+        'tab-atp0101-consola': 'UI.ATP.01.01 · Consola de Llamado (Bandeja de Atención)',
+        'tab-atp0102-modal': 'UI.ATP.01.02 · Modal de Derivación',
+        'tab-atp0103-alerta': 'UI.ATP.01.03 · Alerta de Ausencia (Confirmación)',
+        'tab-tur0801-masiva': 'CU-SA.AT.TUR.08 · Reprogramación masiva (Contingencias)',
+        'tab-tur0901-anulacion': 'CU-SA.AT.TUR.09 · Anulación masiva (Modo Cancelación)',
+        'tab-tur1001-tablero': 'CU-SA.AT.TUR.10 · Tablero de Gestión de Agendas',
+        'tab-tur1002-editor': 'CU-SA.AT.TUR.10 · Editor de Reglas de Agenda (Generador)',
+        'tab-tur1101-monitor': 'UI.TUR.11.01 · Monitor de Sala (Grilla en Vivo)',
+        'tab-tur1102-placa': 'UI.TUR.11.02 · Placa Sin Turnos (Estado Vacío)',
+        'tab-turint1201-consola': 'UI.TUR.INT.12.01 · Consola de Historial de Turnos',
+        'tab-turint1202-detalle': 'UI.TUR.INT.12.02 · Detalle del Turno (Modal)',
+        'tab-turint1203-auditoria': 'UI.TUR.INT.12.03 · Registro de Auditoría del Turno',
         'tab-dashboard': 'UI.CFG.01 · Tablero de Gestión (Dashboard)',
         'tab-editor': 'UI.CFG.02 · Editor de Agenda (Formulario)',
         'tab-conflictos': 'UI.CFG.03 · Gestión de Conflictos (Alerta)',

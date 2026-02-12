@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tótem de Auto-atención (Modo Kiosco)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+    .kiosk-btn { min-height: 72px; font-size: 1.5rem; padding: 1rem 1.5rem; }
+    .kiosk-btn-sm { min-height: 56px; font-size: 1.25rem; }
+    @keyframes pulse-scanner {
+      0%, 100% { opacity: 0.6; box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+      50% { opacity: 1; box-shadow: 0 0 0 24px rgba(59, 130, 246, 0); }
+    }
+    .scanner-zone { animation: pulse-scanner 2s ease-in-out infinite; }
+    @keyframes fade-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .screen-success { animation: fade-in 0.4s ease-out; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col">
+  <!-- Contenedor por estado -->
+  <div id="estado-reposo" class="flex-1 flex flex-col items-center justify-center px-6 py-8 text-center">
+    <p class="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-800 leading-tight max-w-3xl mb-12">
+      Bienvenido a CAAITBA. Escanee su QR o Ingrese su DNI para anunciarse.
+    </p>
+    <div class="scanner-zone w-64 h-40 rounded-2xl border-4 border-blue-500 bg-blue-50 flex flex-col items-center justify-center gap-2 mb-16">
+      <i class="fa-solid fa-barcode-read text-5xl text-blue-600"></i>
+      <span class="text-xl font-medium text-blue-700">Coloque aquí</span>
+      <span class="text-lg text-slate-600">Animación del lector</span>
+    </div>
+    <div class="flex justify-center w-full max-w-2xl">
+      <button type="button" id="btn-ingreso-manual" class="kiosk-btn rounded-2xl bg-white border-2 border-slate-300 text-slate-800 font-semibold shadow-lg hover:bg-slate-50 active:scale-[0.98] transition px-10">
+        <i class="fa-solid fa-keyboard mr-2"></i> Ingresar DNI Manualmente
+      </button>
+    </div>
+  </div>
+
+  <!-- Teclado numérico + confirmación (oculto por defecto) -->
+  <div id="estado-teclado" class="hidden flex-1 flex flex-col px-4 py-6">
+    <p class="text-2xl font-semibold text-slate-800 mb-4 text-center">Ingrese su DNI o código de turno</p>
+    <div class="max-w-md mx-auto w-full mb-6">
+      <input type="text" id="input-dni" readonly placeholder="—" class="w-full text-3xl text-center rounded-xl border-2 border-slate-300 bg-white py-4 font-mono tracking-widest" />
+    </div>
+    <div class="grid grid-cols-3 gap-3 max-w-md mx-auto w-full mb-6">
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">1</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">2</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">3</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">4</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">5</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">6</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">7</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">8</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">9</button>
+      <button type="button" class="num-key kiosk-btn-sm rounded-xl bg-white border-2 border-slate-300 font-semibold text-slate-800 shadow active:scale-95">0</button>
+      <button type="button" id="key-borrar" class="kiosk-btn-sm rounded-xl bg-slate-200 text-slate-700 font-semibold shadow active:scale-95 col-span-2">
+        <i class="fa-solid fa-delete-left"></i> Borrar
+      </button>
+      <button type="button" id="key-buscar" class="kiosk-btn-sm rounded-xl bg-blue-600 text-white font-semibold shadow active:scale-95">Buscar</button>
+    </div>
+    <div class="flex justify-center">
+      <button type="button" id="btn-cerrar-teclado" class="kiosk-btn-sm rounded-xl border-2 border-slate-300 bg-white px-8 font-semibold text-slate-700">Volver</button>
+    </div>
+  </div>
+
+  <!-- Confirmación: "Hola [Nombre], tu turno para [Trámite] ha sido confirmado." + [Confirmar] -->
+  <div id="estado-confirmacion" class="hidden flex-1 flex flex-col items-center justify-center px-6 py-8 text-center">
+    <p class="text-2xl sm:text-3xl font-semibold text-slate-800 leading-tight max-w-2xl mb-4">
+      Hola <strong id="conf-nombre">Juan Pérez</strong>, tu turno para <strong id="conf-tramite">Jubilaciones</strong> ha sido confirmado.
+    </p>
+    <p class="text-xl text-slate-600 mb-10">Número de orden: <strong id="conf-orden-preview" class="text-2xl text-emerald-700">A-24</strong></p>
+    <button type="button" id="btn-confirmar-final" class="kiosk-btn rounded-2xl bg-emerald-600 text-white font-semibold shadow-lg hover:bg-emerald-700 active:scale-[0.98] px-12">
+      <i class="fa-solid fa-check-double mr-2"></i> Confirmar
+    </button>
+  </div>
+
+  <!-- Estado Éxito: pantalla verde, número de orden gigante, "Retire su ticket" -->
+  <div id="estado-exito" class="hidden flex-1 flex flex-col items-center justify-center px-6 py-12 bg-emerald-600 screen-success min-h-screen">
+    <p class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">Retire su ticket</p>
+    <p id="numero-orden" class="text-7xl sm:text-8xl md:text-9xl font-black text-white tracking-tight mb-8">A-24</p>
+    <p class="text-2xl sm:text-3xl text-emerald-100 font-medium">Guarde este número. Será llamado por pantalla.</p>
+    <button type="button" id="btn-nuevo-turno" class="mt-12 kiosk-btn rounded-2xl bg-white text-emerald-700 font-semibold shadow-lg hover:bg-emerald-50 active:scale-[0.98] px-10">
+      Nuevo turno
+    </button>
+  </div>
+
+  <script>
+    (function () {
+      var estadoReposo = document.getElementById('estado-reposo');
+      var estadoTeclado = document.getElementById('estado-teclado');
+      var estadoConfirmacion = document.getElementById('estado-confirmacion');
+      var estadoExito = document.getElementById('estado-exito');
+
+      var inputDni = document.getElementById('input-dni');
+      var numKeys = document.querySelectorAll('.num-key');
+      var btnIngresoManual = document.getElementById('btn-ingreso-manual');
+      var btnCerrarTeclado = document.getElementById('btn-cerrar-teclado');
+      var keyBorrar = document.getElementById('key-borrar');
+      var keyBuscar = document.getElementById('key-buscar');
+      var btnConfirmarFinal = document.getElementById('btn-confirmar-final');
+      var btnNuevoTurno = document.getElementById('btn-nuevo-turno');
+
+      function show(panel) {
+        estadoReposo.classList.add('hidden');
+        estadoTeclado.classList.add('hidden');
+        estadoConfirmacion.classList.add('hidden');
+        estadoExito.classList.add('hidden');
+        if (panel) panel.classList.remove('hidden');
+      }
+
+      btnIngresoManual.addEventListener('click', function () {
+        inputDni.value = '';
+        show(estadoTeclado);
+      });
+
+      btnCerrarTeclado.addEventListener('click', function () {
+        show(estadoReposo);
+      });
+
+      numKeys.forEach(function (k) {
+        k.addEventListener('click', function () {
+          inputDni.value += this.textContent.trim();
+        });
+      });
+      keyBorrar.addEventListener('click', function () {
+        inputDni.value = inputDni.value.slice(0, -1);
+      });
+      keyBuscar.addEventListener('click', function () {
+        if (inputDni.value.trim().length >= 7) {
+          show(estadoConfirmacion);
+        }
+      });
+
+      btnConfirmarFinal.addEventListener('click', function () {
+        show(estadoExito);
+      });
+
+      btnNuevoTurno.addEventListener('click', function () {
+        show(estadoReposo);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CU · Eximición CMAO (Relación de Dependencia)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-900">Eximición CMAO · Relación de Dependencia (100%)</h1>
+          <p class="text-sm text-gray-500 mt-1">Prototipo de Solicitud y Validación Documental</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 uppercase tracking-wide">Prototipo UI</span>
+          <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 text-xs font-semibold">
+            EXI
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="bg-white border-b border-gray-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-wrap gap-1">
+          <button class="exi-tab-btn px-4 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600 bg-blue-50/50" data-tab="exi01">
+            <i class="fas fa-table mr-2"></i>
+            UI.EXI.01 · Selección de Año
+          </button>
+          <button class="exi-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="exi02">
+            <i class="fas fa-file-upload mr-2"></i>
+            UI.EXI.02 · Carga y DDJJ
+          </button>
+          <button class="exi-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="exi03">
+            <i class="fas fa-check-circle mr-2"></i>
+            UI.EXI.03 · Confirmación
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-8 space-y-8">
+      <!-- UI.EXI.01 -->
+      <section id="exi01" class="exi-panel space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.EXI.01 · Selección de Año (Grilla de Exigibilidad)</h2>
+          <p class="text-sm text-gray-600">
+            El sistema lista años donde existe deuda/exigibilidad de CMAO. Seleccione un año habilitado para iniciar la solicitud.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Histórico de Eximiciones y Años Exigibles</p>
+              <p class="text-xs text-gray-500">Orden: Año Fiscal (Descendente) · Semáforo de estado: Verde/Amarillo/Rojo.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[11px]">
+              <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 border border-emerald-200 text-emerald-700">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Disponible
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 border border-amber-200 text-amber-800">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Pendiente de validación
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 border border-red-200 text-red-700">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> Bloqueado
+              </span>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 text-sm">
+              <thead class="bg-gray-50">
+                <tr class="text-[11px] font-semibold text-gray-600 uppercase tracking-wide">
+                  <th class="px-4 py-2 text-left">Año</th>
+                  <th class="px-4 py-2 text-left">Estado Matricular</th>
+                  <th class="px-4 py-2 text-left">Estado Trámite</th>
+                  <th class="px-4 py-2 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-100">
+                <!-- DISPONIBLE -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2023</td>
+                  <td class="px-4 py-2 text-gray-700">ACTIVO</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 border border-emerald-200 text-[11px] font-semibold text-emerald-700">
+                      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      DISPONIBLE
+                    </span>
+                  </td>
+                  <td class="px-4 py-2 text-right">
+                    <button data-go="exi02" class="go-btn inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1">
+                      SOLICITAR
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- PENDIENTE -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2022</td>
+                  <td class="px-4 py-2 text-gray-700">ACTIVO</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 border border-amber-200 text-[11px] font-semibold text-amber-800">
+                      <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                      PENDIENTE DE VALIDACIÓN
+                    </span>
+                  </td>
+                  <td class="px-4 py-2 text-right">
+                    <span class="text-xs text-gray-400 italic">En Revisión</span>
+                  </td>
+                </tr>
+
+                <!-- RECHAZADA + VER MOTIVO -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2021</td>
+                  <td class="px-4 py-2 text-gray-700">BAJA TEMPORAL</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 border border-red-200 text-[11px] font-semibold text-red-700">
+                      <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                      RECHAZADA
+                    </span>
+                  </td>
+                  <td class="px-4 py-2 text-right">
+                    <button
+                      class="inline-flex items-center justify-center rounded-lg border border-red-200 bg-white px-4 py-2 text-xs font-semibold text-red-700 shadow-sm hover:bg-red-50"
+                      title="Motivo: Documentación ilegible. Por favor, adjunte PDF/JPG legible y vigente."
+                    >
+                      VER MOTIVO
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- BLOQUEADO: CON ABOGADO -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2020</td>
+                  <td class="px-4 py-2 text-gray-700">ACTIVO</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 border border-red-200 text-[11px] font-semibold text-red-700">
+                      <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                      CON ABOGADO ASIGNADO
+                    </span>
+                  </td>
+                  <td class="px-4 py-2 text-right">
+                    <button data-open="abogado-modal" class="modal-open inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+                      Ver Abogado
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- BLOQUEADO: YA POSEE OPCIÓN 50% -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2019</td>
+                  <td class="px-4 py-2 text-gray-700">ACTIVO</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 border border-red-200 text-[11px] font-semibold text-red-700">
+                      <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                      YA POSEE OPCIÓN 50%
+                    </span>
+                  </td>
+                  <td class="px-4 py-2 text-right">
+                    <span class="text-xs text-gray-400 italic">Bloqueado</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.EXI.02 -->
+      <section id="exi02" class="exi-panel hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.EXI.02 · Formulario de Carga y DDJJ</h2>
+            <p class="text-sm text-gray-600">
+              Año Fiscal seleccionado: <span class="font-semibold">2023</span> · Motivo Eximición: <span class="font-semibold\">Relación de Dependencia (100%)</span>
+            </p>
+          </div>
+          <button data-go="exi01" class="go-btn inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+            <i class="fas fa-arrow-left mr-2"></i> Volver
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <!-- Adjuntos -->
+          <div class="lg:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm p-6 space-y-4">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Adjuntos (RNF-11)</h3>
+              <p class="text-xs text-gray-500 mt-1">
+                Debe cargar al menos 1 archivo. Formatos: PDF/JPG · Máx 5MB.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-5">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div class="flex items-start gap-3">
+                  <div class="h-10 w-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center text-gray-600">
+                    <i class="fas fa-paperclip"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Seleccionar Archivo</p>
+                    <p class="text-xs text-gray-500">Certificado de Trabajo (obligatorio) · Recibo de Sueldo (opcional) · Telegrama/Cese (opcional)</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <input id="file-input" type="file" multiple accept=".pdf,.jpg,.jpeg" class="hidden" />
+                  <button id="btn-file" class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">
+                    <i class="fas fa-folder-open mr-2"></i> Examinar / Subir
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+              <div class="px-4 py-2 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+                <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Archivos cargados</p>
+                <p id="files-count" class="text-xs text-gray-500">0 archivos</p>
+              </div>
+              <ul id="files-list" class="divide-y divide-gray-100">
+                <li class="px-4 py-3 text-sm text-gray-500">Aún no se cargaron archivos.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- DDJJ + controles -->
+          <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 space-y-4">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Declaración Jurada (Art. 27 · Ley 12.490)</h3>
+              <p class="text-xs text-gray-500 mt-1">Texto fijo para lectura.</p>
+            </div>
+
+            <textarea disabled rows="9" class="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-600 resize-none leading-relaxed">Declaro bajo juramento que la documentación adjunta acredita la relación de dependencia y solicito la eximición de la obligación contributiva correspondiente, conforme lo previsto en el Artículo 27 de la Ley 12.490 y normativa complementaria vigente.
+
+Reconozco que la solicitud quedará sujeta a validación por el Área de Beneficios y que podrán requerirse aclaraciones o documentación adicional.</textarea>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Email de Notificación <span class="text-red-600">*</span></label>
+              <input type="email" value="afiliado@ejemplo.com" class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+              <p class="text-xs text-gray-500 mt-1">Se utiliza para informar el resultado de la validación y la habilitación de la boleta.</p>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input id="accept-check" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+              <label for="accept-check" class="text-sm text-gray-700 cursor-pointer">Acepto Condiciones Legales</label>
+            </div>
+
+            <button id="confirm-btn" disabled class="w-full inline-flex items-center justify-center rounded-lg bg-blue-600/40 px-4 py-2.5 text-sm font-semibold text-white shadow-sm cursor-not-allowed">
+              Confirmar Solicitud
+            </button>
+
+            <p class="text-xs text-gray-500">
+              El botón se habilita solo si: <span class="font-semibold">Adjuntos &gt; 0</span> y <span class="font-semibold">Acepto = TRUE</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.EXI.03 -->
+      <section id="exi03" class="exi-panel hidden space-y-6">
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-8 text-center space-y-4">
+          <div class="mx-auto h-14 w-14 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+            <i class="fas fa-paper-plane text-2xl"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-900">SU SOLICITUD HA SIDO ENVIADA A REVISIÓN</h2>
+          <p class="text-sm text-gray-600 max-w-2xl mx-auto">
+            Recibirá un correo electrónico cuando el Área de Beneficios valide su documentación y habilite la boleta de gastos.
+          </p>
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900 max-w-2xl mx-auto">
+            <span class="font-semibold">Advertencia:</span> NO se debe pagar nada aún. Espere la notificación de validación y la habilitación de la boleta.
+          </div>
+
+          <div class="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+            <button data-go="exi01" class="go-btn inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+              Volver
+            </button>
+            <button class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">
+              Salir
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Abogado -->
+    <div id="abogado-modal" class="hidden fixed inset-0 z-50">
+      <div class="absolute inset-0 bg-gray-900/40"></div>
+      <div class="relative min-h-full flex items-center justify-center p-4">
+        <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+          <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-gavel text-gray-600"></i>
+              <p class="text-sm font-semibold text-gray-900">Estudio Jurídico Asignado</p>
+            </div>
+            <button data-close="abogado-modal" class="modal-close text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="p-5 space-y-3 text-sm">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Datos</p>
+            <div class="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-2">
+              <p><span class="font-semibold text-gray-800">Nombre:</span> Estudio Jurídico López & Asociados</p>
+              <p><span class="font-semibold text-gray-800">Dirección:</span> Av. Corrientes 2500, Piso 10, CABA</p>
+              <p><span class="font-semibold text-gray-800">Teléfono:</span> (011) 555-0202</p>
+              <p><span class="font-semibold text-gray-800">Email:</span> estudioslopez@ejemplo.com</p>
+            </div>
+            <p class="text-sm text-gray-700">
+              Este año se encuentra bloqueado para autogestión. Para continuar, comuníquese con el estudio asignado.
+            </p>
+          </div>
+          <div class="px-5 py-4 border-t border-gray-200 flex justify-end gap-2 bg-gray-50">
+            <button data-close="abogado-modal" class="modal-close inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tabs internos EXI
+    const exiTabButtons = document.querySelectorAll('.exi-tab-btn');
+    const exiPanels = document.querySelectorAll('.exi-panel');
+
+    function showExi(tabId) {
+      exiTabButtons.forEach((b) => {
+        const isActive = b.getAttribute('data-tab') === tabId;
+        b.classList.toggle('text-blue-600', isActive);
+        b.classList.toggle('border-blue-600', isActive);
+        b.classList.toggle('bg-blue-50/50', isActive);
+        b.classList.toggle('text-gray-500', !isActive);
+        b.classList.toggle('border-transparent', !isActive);
+      });
+      exiPanels.forEach((p) => p.classList.toggle('hidden', p.id !== tabId));
+    }
+
+    exiTabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => showExi(btn.getAttribute('data-tab')));
+    });
+
+    // Navegación por botones "Solicitar/Volver"
+    document.querySelectorAll('.go-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-go');
+        if (target) showExi(target);
+      });
+    });
+
+    // Modal
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('hidden');
+    }
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('hidden');
+    }
+    document.querySelectorAll('.modal-open').forEach((btn) => {
+      btn.addEventListener('click', () => openModal(btn.getAttribute('data-open')));
+    });
+    document.querySelectorAll('.modal-close').forEach((btn) => {
+      btn.addEventListener('click', () => closeModal(btn.getAttribute('data-close')));
+    });
+
+    // Upload + lista + validación de habilitación
+    const fileInput = document.getElementById('file-input');
+    const btnFile = document.getElementById('btn-file');
+    const listEl = document.getElementById('files-list');
+    const countEl = document.getElementById('files-count');
+    const acceptCheck = document.getElementById('accept-check');
+    const confirmBtn = document.getElementById('confirm-btn');
+
+    let filesStore = [];
+
+    function renderFiles() {
+      if (!listEl) return;
+      listEl.innerHTML = '';
+      if (filesStore.length === 0) {
+        const li = document.createElement('li');
+        li.className = 'px-4 py-3 text-sm text-gray-500';
+        li.textContent = 'Aún no se cargaron archivos.';
+        listEl.appendChild(li);
+      } else {
+        filesStore.forEach((f, idx) => {
+          const li = document.createElement('li');
+          li.className = 'px-4 py-3 flex items-center justify-between gap-3';
+          li.innerHTML = `
+            <div class="min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate">${f.name}</p>
+              <p class="text-xs text-gray-500">${(f.size/1024/1024).toFixed(2)} MB · ${f.type || 'archivo'}</p>
+            </div>
+            <button class="text-red-600 hover:text-red-700" aria-label="Eliminar archivo" data-del="${idx}">
+              <i class="fas fa-trash"></i>
+            </button>
+          `;
+          listEl.appendChild(li);
+        });
+      }
+      if (countEl) countEl.textContent = `${filesStore.length} archivo${filesStore.length === 1 ? '' : 's'}`;
+      updateConfirmState();
+    }
+
+    function updateConfirmState() {
+      const ok = (filesStore.length > 0) && (acceptCheck && acceptCheck.checked);
+      if (!confirmBtn) return;
+      confirmBtn.disabled = !ok;
+      confirmBtn.classList.toggle('cursor-not-allowed', !ok);
+      confirmBtn.classList.toggle('bg-blue-600/40', !ok);
+      confirmBtn.classList.toggle('bg-blue-600', ok);
+      confirmBtn.classList.toggle('hover:bg-blue-700', ok);
+      confirmBtn.classList.toggle('focus:ring-2', ok);
+      confirmBtn.classList.toggle('focus:ring-blue-500', ok);
+      confirmBtn.classList.toggle('focus:ring-offset-1', ok);
+    }
+
+    if (btnFile && fileInput) {
+      btnFile.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', () => {
+        const incoming = Array.from(fileInput.files || []);
+        // Validación básica (formato y tamaño)
+        const allowed = ['application/pdf', 'image/jpeg'];
+        incoming.forEach((f) => {
+          const isTypeOk = allowed.includes(f.type);
+          const isSizeOk = f.size <= 5 * 1024 * 1024;
+          if (isTypeOk && isSizeOk) {
+            filesStore.push(f);
+          }
+        });
+        fileInput.value = '';
+        renderFiles();
+      });
+    }
+
+    if (listEl) {
+      listEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-del]');
+        if (!btn) return;
+        const idx = Number(btn.getAttribute('data-del'));
+        filesStore.splice(idx, 1);
+        renderFiles();
+      });
+    }
+
+    if (acceptCheck) {
+      acceptCheck.addEventListener('change', updateConfirmState);
+    }
+
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        if (confirmBtn.disabled) return;
+        showExi('exi03');
+      });
+    }
+
+    // Init
+    renderFiles();
+  </script>
+</body>
+</html>
+

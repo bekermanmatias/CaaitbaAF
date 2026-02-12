@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modal de Derivación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-200/90 min-h-screen flex items-center justify-center p-4">
+  <!-- Simula ventana modal centrada -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-md w-full overflow-hidden">
+    <div class="px-5 py-4 border-b border-slate-200 bg-slate-50">
+      <h2 class="text-base font-semibold text-slate-900 flex items-center gap-2">
+        <i class="fa-solid fa-arrow-right-arrow-left text-blue-600"></i>
+        Derivar turno
+      </h2>
+      <p class="text-xs text-slate-500 mt-0.5">Seleccione sector destino y motivo. El turno se moverá a esa cola.</p>
+    </div>
+    <form class="p-5 space-y-4">
+      <div>
+        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wide mb-1">Sector Destino <span class="text-red-500">*</span></label>
+        <select required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20">
+          <option value="">Seleccionar sector</option>
+          <option>Legales</option>
+          <option>General</option>
+          <option>Jubilaciones</option>
+          <option>Préstamos</option>
+          <option>Turismo</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wide mb-1">Motivo Derivación <span class="text-red-500">*</span></label>
+        <textarea rows="3" required placeholder="Ej: Error en selección de trámite" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"></textarea>
+      </div>
+      <div class="flex items-center gap-3">
+        <input type="checkbox" id="mantener-prioridad" class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
+        <label for="mantener-prioridad" class="text-sm text-slate-700">Mantener Prioridad</label>
+      </div>
+      <p class="text-[11px] text-slate-500">Si se marca, el turno se inserta al inicio de la nueva cola.</p>
+    </form>
+    <div class="px-5 py-4 border-t border-slate-200 bg-slate-50 flex flex-wrap gap-3 justify-end">
+      <button type="button" class="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50">
+        Cancelar
+      </button>
+      <button type="button" class="rounded-xl bg-blue-600 text-white px-4 py-2.5 text-sm font-semibold hover:bg-blue-700">
+        Confirmar Derivación
+      </button>
+    </div>
+  </div>
+</body>
+</html>

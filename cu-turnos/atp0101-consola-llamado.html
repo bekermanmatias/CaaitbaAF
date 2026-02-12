@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Consola de Llamado (Bandeja de Atención)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f3f4f6; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .fila-espera-alta { background-color: #fef2f2; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <div class="min-h-screen flex flex-col">
+    <!-- Encabezado: Ubicación + Usuario -->
+    <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-20">
+      <div class="px-4 sm:px-6 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-semibold shadow-sm">CA</div>
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Ubicación Actual</p>
+              <p class="text-sm font-semibold text-slate-900">Sede Central - Box 04</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-right">
+            <p class="text-[11px] text-slate-400 uppercase">Usuario</p>
+            <p class="text-xs font-medium text-slate-700">Operador López</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 px-4 sm:px-6 py-6 flex flex-col gap-6 max-w-[1400px] mx-auto w-full">
+      <!-- Panel Central: Turno Activo (zona de acción inmediata) -->
+      <section class="bg-white rounded-2xl border-2 border-blue-200 shadow-sm overflow-hidden">
+        <div class="px-4 sm:px-6 py-4 border-b border-slate-200 bg-slate-50/80">
+          <span class="inline-flex items-center gap-2 rounded-full bg-amber-100 text-amber-800 border border-amber-200 px-3 py-1 text-xs font-semibold">
+            <i class="fa-solid fa-bell"></i>
+            Estado del Turno: LLAMANDO (00:30)
+          </span>
+        </div>
+        <div class="px-4 sm:px-6 py-8 sm:py-10">
+          <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold mb-1">Turno Actual (Código)</p>
+          <p class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">JUB-24</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-4">
+            <div>
+              <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Nombre Afiliado</p>
+              <p class="mt-1 font-semibold text-slate-900">María Gonzalez</p>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Motivo</p>
+              <p class="mt-1 font-semibold text-slate-900">Asesoramiento Jubilatorio</p>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Tiempo de Espera</p>
+              <p class="mt-1 font-mono font-semibold text-slate-900">10 min</p>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Observaciones Recepción</p>
+              <p class="mt-1 text-slate-700">Movilidad reducida</p>
+            </div>
+          </div>
+          <!-- Acciones: visibles cuando estado es LLAMANDO -->
+          <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-200">
+            <button type="button" class="rounded-xl bg-amber-500 text-white px-4 py-3 text-sm font-semibold shadow-sm hover:bg-amber-600 inline-flex items-center justify-center gap-2">
+              <i class="fa-solid fa-bell"></i>
+              Re-Llamar
+            </button>
+            <button type="button" class="rounded-xl bg-emerald-600 text-white px-4 py-3 text-sm font-semibold shadow-sm hover:bg-emerald-700 inline-flex items-center justify-center gap-2">
+              <i class="fa-solid fa-play"></i>
+              Iniciar Atención
+            </button>
+            <button type="button" id="btn-marcar-ausente" class="rounded-xl bg-red-600 text-white px-4 py-3 text-sm font-semibold shadow-sm hover:bg-red-700 inline-flex items-center justify-center gap-2">
+              <i class="fa-solid fa-user-xmark"></i>
+              Marcar Ausente
+            </button>
+            <button type="button" id="btn-derivar" class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 inline-flex items-center justify-center gap-2">
+              <i class="fa-solid fa-arrow-right-arrow-left"></i>
+              Derivar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel Inferior: Cola de Espera -->
+      <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex-1 min-h-0">
+        <div class="px-4 py-3 border-b border-slate-200">
+          <h2 class="text-sm font-semibold text-slate-800">Próximos en Espera</h2>
+          <p class="text-[11px] text-slate-500 mt-0.5">Orden: Prioridad Descendente, luego Hora de Llegada Ascendente (FIFO)</p>
+        </div>
+        <div class="overflow-auto max-h-[320px]">
+          <table class="w-full text-sm min-w-[640px]">
+            <thead class="bg-slate-50 text-[11px] uppercase text-slate-500 tracking-wide sticky top-0">
+              <tr>
+                <th class="px-3 py-2 text-left font-semibold w-10">#</th>
+                <th class="px-3 py-2 text-left font-semibold">Prioridad</th>
+                <th class="px-3 py-2 text-left font-semibold">Hora Llegada</th>
+                <th class="px-3 py-2 text-left font-semibold">Espera</th>
+                <th class="px-3 py-2 text-left font-semibold">Afiliado</th>
+                <th class="px-3 py-2 text-left font-semibold">Trámite</th>
+                <th class="px-3 py-2 text-center font-semibold">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-xs">
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2 font-medium">1</td>
+                <td class="px-3 py-2"><span class="text-base" title="Alta">♿</span> <span class="text-slate-500">(Alta)</span></td>
+                <td class="px-3 py-2 font-mono">09:15</td>
+                <td class="px-3 py-2">10 min</td>
+                <td class="px-3 py-2">María Gonzalez</td>
+                <td class="px-3 py-2">General</td>
+                <td class="px-3 py-2 text-center"><button type="button" class="rounded-lg bg-blue-600 text-white px-3 py-1.5 text-xs font-semibold hover:bg-blue-700">Llamar</button></td>
+              </tr>
+              <tr class="fila-espera-alta hover:bg-red-50">
+                <td class="px-3 py-2 font-medium">2</td>
+                <td class="px-3 py-2 text-slate-500">(Normal)</td>
+                <td class="px-3 py-2 font-mono">08:50</td>
+                <td class="px-3 py-2 font-medium text-red-700">35 min</td>
+                <td class="px-3 py-2">Carlos Ruiz</td>
+                <td class="px-3 py-2">Jubilaciones</td>
+                <td class="px-3 py-2 text-center"><button type="button" class="rounded-lg bg-blue-600 text-white px-3 py-1.5 text-xs font-semibold hover:bg-blue-700">Llamar</button></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2 font-medium">3</td>
+                <td class="px-3 py-2 text-slate-500">(Normal)</td>
+                <td class="px-3 py-2 font-mono">09:00</td>
+                <td class="px-3 py-2">25 min</td>
+                <td class="px-3 py-2">Ana Silva</td>
+                <td class="px-3 py-2">General</td>
+                <td class="px-3 py-2 text-center"><button type="button" class="rounded-lg bg-blue-600 text-white px-3 py-1.5 text-xs font-semibold hover:bg-blue-700">Llamar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.getElementById('btn-derivar').addEventListener('click', function () {
+      window.parent.postMessage({ tipo: 'abrir', pantalla: 'atp0102-modal-derivacion.html' }, '*');
+    });
+    document.getElementById('btn-marcar-ausente').addEventListener('click', function () {
+      window.parent.postMessage({ tipo: 'abrir', pantalla: 'atp0103-alerta-ausencia.html' }, '*');
+    });
+  </script>
+</body>
+</html>

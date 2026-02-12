@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Confirmación de Identidad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+    .kiosk-btn { min-height: 72px; font-size: 1.35rem; padding: 1rem 1.5rem; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col">
+  <div class="flex-1 flex flex-col items-center justify-center px-6 py-8 text-center">
+    <div class="max-w-xl w-full space-y-8">
+      <!-- Nombre Afiliado -->
+      <p class="text-2xl sm:text-3xl font-semibold text-slate-800">
+        Hola, <strong class="text-slate-900">Juan Pérez</strong>.
+      </p>
+      <!-- Detalle del Turno -->
+      <p class="text-xl sm:text-2xl text-slate-700 leading-snug">
+        Tienes un turno para <strong>Consulta General</strong> a las <strong>10:00 hs</strong>.
+      </p>
+      <!-- Pregunta (Handshake de seguridad) -->
+      <p class="text-2xl sm:text-3xl font-semibold text-slate-800 pt-2">
+        ¿Deseas anunciarte ahora?
+      </p>
+    </div>
+    <!-- Acciones -->
+    <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md mt-10">
+      <button type="button" id="btn-no-soy-yo" class="kiosk-btn flex-1 rounded-2xl border-2 border-slate-300 bg-white text-slate-700 font-semibold shadow hover:bg-slate-50 active:scale-[0.98]">
+        <i class="fa-solid fa-user-xmark mr-2"></i> No soy yo
+      </button>
+      <button type="button" id="btn-confirmar" class="kiosk-btn flex-1 rounded-2xl bg-emerald-600 text-white font-semibold shadow-lg hover:bg-emerald-700 active:scale-[0.98]">
+        <i class="fa-solid fa-check mr-2"></i> Sí, Anunciarme
+      </button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      document.getElementById('btn-confirmar').addEventListener('click', function () {
+        alert('Prototipo: Check-in ejecutado → estado EN_ESPERA → ir a Ticket.');
+      });
+      document.getElementById('btn-no-soy-yo').addEventListener('click', function () {
+        if (window.parent !== window) window.parent.postMessage({ tipo: 'volver' }, '*');
+        else window.history.back();
+      });
+    })();
+  </script>
+</body>
+</html>

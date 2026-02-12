@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monitor de Sala (Grilla en Vivo)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    @keyframes blink-in {
+      0% { opacity: 0; transform: scale(1.02); }
+      50% { opacity: 1; }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .fila-destacada { animation: blink-in 0.6s ease-out; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+  <!-- Cabecera: Logo (Izq) + Hora/Fecha (Der) -->
+  <header class="flex-shrink-0 flex items-center justify-between px-6 py-4 border-b border-slate-700">
+    <div class="flex items-center gap-4">
+      <div class="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+        CA
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Nombre de Sede</p>
+        <p class="text-lg font-bold text-white">Sede Central</p>
+      </div>
+    </div>
+    <div class="text-right">
+      <p id="reloj" class="text-4xl sm:text-5xl font-mono font-bold text-white tabular-nums">14:32</p>
+      <p id="fecha" class="text-sm text-slate-400 mt-0.5">Jueves 5 de febrero de 2026</p>
+    </div>
+  </header>
+
+  <!-- Cuerpo: Grilla de llamados (~80% pantalla) -->
+  <main class="flex-1 flex flex-col justify-center px-6 py-8 min-h-0">
+    <div class="max-w-4xl mx-auto w-full">
+      <table class="w-full text-center border-collapse">
+        <thead>
+          <tr class="text-slate-400 text-sm uppercase tracking-wider border-b border-slate-600 pb-2">
+            <th class="w-[40%] py-3 font-semibold">Turno</th>
+            <th class="w-[60%] py-3 font-semibold">Puesto</th>
+          </tr>
+        </thead>
+        <tbody class="text-slate-200">
+          <!-- Fila 1: Destacada (fondo primario, texto blanco, fuente 50% mayor) -->
+          <tr class="fila-destacada bg-blue-600 text-white">
+            <td class="py-5 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">JUB-24</td>
+            <td class="py-5 text-3xl sm:text-4xl md:text-5xl font-bold">BOX 04</td>
+          </tr>
+          <!-- Filas 2-6: Historial (fondo alternado gris oscuro / negro, texto gris claro) -->
+          <tr class="bg-slate-800">
+            <td class="py-4 text-xl sm:text-2xl font-bold text-slate-300">GRAL-12</td>
+            <td class="py-4 text-xl sm:text-2xl font-semibold text-slate-300">BOX 02</td>
+          </tr>
+          <tr class="bg-slate-900">
+            <td class="py-4 text-xl sm:text-2xl font-bold text-slate-300">JUB-23</td>
+            <td class="py-4 text-xl sm:text-2xl font-semibold text-slate-300">BOX 04</td>
+          </tr>
+          <tr class="bg-slate-800">
+            <td class="py-4 text-xl sm:text-2xl font-bold text-slate-300">PRES-08</td>
+            <td class="py-4 text-xl sm:text-2xl font-semibold text-slate-300">BOX 01</td>
+          </tr>
+          <tr class="bg-slate-900">
+            <td class="py-4 text-xl sm:text-2xl font-bold text-slate-300">GRAL-11</td>
+            <td class="py-4 text-xl sm:text-2xl font-semibold text-slate-300">BOX 03</td>
+          </tr>
+          <tr class="bg-slate-800">
+            <td class="py-4 text-xl sm:text-2xl font-bold text-slate-300">TUR-05</td>
+            <td class="py-4 text-xl sm:text-2xl font-semibold text-slate-300">BOX 02</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Pie: Estado de conexión (discreto) -->
+  <footer class="flex-shrink-0 flex justify-end items-center px-6 py-2 border-t border-slate-800">
+    <span class="flex items-center gap-2 text-slate-500 text-xs" title="Estado Conexión">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></span>
+      Conectado
+    </span>
+  </footer>
+
+  <script>
+    (function () {
+      function actualizarReloj() {
+        var now = new Date();
+        var h = now.getHours();
+        var m = now.getMinutes();
+        document.getElementById('reloj').textContent = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+        var opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('fecha').textContent = now.toLocaleDateString('es-AR', opts);
+      }
+      actualizarReloj();
+      setInterval(actualizarReloj, 1000);
+    })();
+  </script>
+</body>
+</html>

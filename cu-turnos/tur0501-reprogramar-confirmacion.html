@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reprogramar turno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f3f4f6; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-20">
+      <div class="px-4 sm:px-6 py-4 max-w-4xl mx-auto w-full">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-semibold shadow-sm">CA</div>
+            <div>
+              <p class="text-xs font-semibold tracking-wide uppercase text-slate-500">CAAITBA</p>
+              <p class="text-sm font-semibold text-slate-900">Reprogramar turno</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 px-4 sm:px-6 py-6 max-w-4xl mx-auto w-full">
+      <div class="text-center mb-6">
+        <h1 class="text-xl sm:text-2xl font-semibold text-slate-900">Confirmar cambio de turno</h1>
+        <p class="mt-2 text-sm text-slate-600">Revisá los detalles antes de confirmar el cambio.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+        <!-- Tarjeta: Turno a Liberar (Anterior) -->
+        <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative">
+          <div class="absolute inset-y-0 left-0 w-1.5 bg-slate-400"></div>
+          <div class="px-4 sm:px-6 py-5">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fa-solid fa-calendar-xmark text-slate-400"></i>
+              <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wide">Turno a liberar</h2>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Fecha:</span>
+                <span class="text-slate-700 line-through">Lunes 10 de febrero</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Horario:</span>
+                <span class="text-slate-700 line-through">10:30 hs</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Sede:</span>
+                <span class="text-slate-700">La Plata</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Trámite:</span>
+                <span class="text-slate-700">Jubilaciones</span>
+              </div>
+            </div>
+            <div class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-red-50 text-red-700 border border-red-200 px-3 py-1 text-xs font-medium">
+              <i class="fa-solid fa-exclamation-triangle"></i>
+              Se anulará
+            </div>
+          </div>
+        </section>
+
+        <!-- Tarjeta: Nuevo Turno -->
+        <section class="bg-white rounded-2xl border border-emerald-200 shadow-sm overflow-hidden relative">
+          <div class="absolute inset-y-0 left-0 w-1.5 bg-emerald-500"></div>
+          <div class="px-4 sm:px-6 py-5">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fa-solid fa-calendar-check text-emerald-600"></i>
+              <h2 class="text-sm font-semibold text-emerald-700 uppercase tracking-wide">Nuevo turno</h2>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Fecha:</span>
+                <span class="font-semibold text-slate-900">Jueves 25 de febrero</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Horario:</span>
+                <span class="font-semibold text-slate-900">14:00 hs</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Sede:</span>
+                <span class="font-semibold text-slate-900">La Plata</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-500 min-w-[80px]">Trámite:</span>
+                <span class="font-semibold text-slate-900">Jubilaciones</span>
+              </div>
+            </div>
+            <div class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-medium">
+              <i class="fa-solid fa-check-circle"></i>
+              Confirmado
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Botonera -->
+      <div class="flex flex-col sm:flex-row gap-3 sm:justify-between">
+        <button type="button" class="text-slate-600 hover:text-slate-700 text-sm font-medium underline inline-flex items-center gap-2">
+          Mantener turno actual
+        </button>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="button" class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 inline-flex items-center justify-center gap-2">
+            <i class="fa-solid fa-calendar-days"></i>
+            Elegir otro horario
+          </button>
+          <button type="button" class="rounded-xl bg-blue-600 text-white px-4 py-3 text-sm font-semibold shadow-sm hover:bg-blue-700 inline-flex items-center justify-center gap-2">
+            <i class="fa-solid fa-check"></i>
+            Confirmar cambio
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

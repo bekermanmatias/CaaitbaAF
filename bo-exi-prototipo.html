@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CU-SA.AF.CMAO.06 · Autorizar Solicitud de Eximición</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-semibold text-slate-900">CU-SA.AF.CMAO.06 · Autorizar Solicitud de Eximición</h1>
+          <p class="text-sm text-slate-500 mt-1">Backoffice · Relación de Dependencia (100%)</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-slate-400 uppercase tracking-wide">Backoffice</span>
+          <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-100 text-xs font-semibold">
+            BO
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="bg-white border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-wrap gap-1">
+          <button
+            class="bo-exi-tab-btn px-4 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600 bg-blue-50/50"
+            data-tab="bo-exi01"
+          >
+            <i class="fas fa-inbox mr-2"></i>
+            UI.BO.EXI.01 · Bandeja Pendientes
+          </button>
+          <button
+            class="bo-exi-tab-btn px-4 py-3 text-sm font-medium text-slate-500 hover:text-slate-700 border-b-2 border-transparent hover:border-slate-300"
+            data-tab="bo-exi02"
+          >
+            <i class="fas fa-folder-open mr-2"></i>
+            UI.BO.EXI.02 · Detalle y Resolución
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-8 space-y-8">
+      <!-- UI.BO.EXI.01 – Bandeja -->
+      <section id="bo-exi01" class="bo-exi-panel space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-slate-900 mb-1">UI.BO.EXI.01 · Bandeja de Solicitudes Pendientes</h2>
+          <p class="text-sm text-slate-600">
+            Bandeja de entrada para el área de Beneficios. Prioriza las solicitudes más antiguas (FIFO) y resalta las que superan el SLA de 10 días.
+          </p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-wide mb-1">Filtros</p>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-sm">
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Nro de Legajo</label>
+              <input type="text" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Ej: 123456" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">DNI</label>
+              <input type="text" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Ej: 20.123.456" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Año Fiscal</label>
+              <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option>Todos</option>
+                <option>2023</option>
+                <option>2022</option>
+                <option>2021</option>
+              </select>
+            </div>
+            <div class="flex items-end gap-2">
+              <button class="inline-flex items-center justify-center rounded-lg bg-slate-800 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-700 focus:ring-offset-1">
+                <i class="fas fa-search mr-2"></i> Buscar
+              </button>
+              <button class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50">
+                Limpiar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grilla -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold text-slate-900">Solicitudes de Eximición Pendientes</p>
+              <p class="text-xs text-slate-500">Ordenadas por Fecha de Solicitud (Más antiguo primero).</p>
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-slate-500">
+              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-1 border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> &lt; 5 días
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-1 border border-amber-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 5 - 10 días
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 border border-red-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> &gt; 10 días
+              </span>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+              <thead class="bg-slate-50 text-[11px] uppercase tracking-wide text-slate-500">
+                <tr>
+                  <th class="px-4 py-2 text-left">Fecha Solicitud</th>
+                  <th class="px-4 py-2 text-left">Legajo</th>
+                  <th class="px-4 py-2 text-left">Apellido y Nombre</th>
+                  <th class="px-4 py-2 text-left">Año Fiscal</th>
+                  <th class="px-4 py-2 text-left">Tipo Adjunto</th>
+                  <th class="px-4 py-2 text-left">Tiempo Espera</th>
+                  <th class="px-4 py-2 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-slate-100">
+                <!-- &gt; 10 días (Rojo) -->
+                <tr class="hover:bg-red-50/50 cursor-pointer" data-go="bo-exi02">
+                  <td class="px-4 py-2 text-sm text-slate-800">01/03/2026</td>
+                  <td class="px-4 py-2 text-sm font-semibold text-slate-900">123456</td>
+                  <td class="px-4 py-2 text-sm text-slate-800">Pérez, Juan</td>
+                  <td class="px-4 py-2 text-sm text-slate-800">2023</td>
+                  <td class="px-4 py-2 text-xs text-slate-700">Certificado de Trabajo</td>
+                  <td class="px-4 py-2 text-xs font-semibold text-red-700">15 días</td>
+                  <td class="px-4 py-2 text-right">
+                    <button class="inline-flex items-center justify-center rounded-full bg-slate-800 px-4 py-1.5 text-[11px] font-semibold text-white shadow-sm hover:bg-slate-900">
+                      Procesar / Ver Detalle
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- 7 días (Amarillo) -->
+                <tr class="hover:bg-amber-50/50 cursor-pointer" data-go="bo-exi02">
+                  <td class="px-4 py-2 text-sm text-slate-800">08/03/2026</td>
+                  <td class="px-4 py-2 text-sm font-semibold text-slate-900">234567</td>
+                  <td class="px-4 py-2 text-sm text-slate-800">Gómez, Ana</td>
+                  <td class="px-4 py-2 text-sm text-slate-800">2022</td>
+                  <td class="px-4 py-2 text-xs text-slate-700">Recibo Sueldo</td>
+                  <td class="px-4 py-2 text-xs font-semibold text-amber-700">7 días</td>
+                  <td class="px-4 py-2 text-right">
+                    <button class="inline-flex items-center justify-center rounded-full bg-slate-800 px-4 py-1.5 text-[11px] font-semibold text-white shadow-sm hover:bg-slate-900">
+                      Procesar / Ver Detalle
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- 2 días (Verde) -->
+                <tr class="hover:bg-emerald-50/50 cursor-pointer" data-go="bo-exi02">
+                  <td class="px-4 py-2 text-sm text-slate-800">13/03/2026</td>
+                  <td class="px-4 py-2 text-sm font-semibold text-slate-900">345678</td>
+                  <td class="px-4 py-2 text-sm text-slate-800">Rivas, Luis</td>
+                  <td class="px-4 py-2 text-sm text-slate-800">2021</td>
+                  <td class="px-4 py-2 text-xs text-slate-700">Telegrama / Cese</td>
+                  <td class="px-4 py-2 text-xs font-semibold text-emerald-700">2 días</td>
+                  <td class="px-4 py-2 text-right">
+                    <button class="inline-flex items-center justify-center rounded-full bg-slate-800 px-4 py-1.5 text-[11px] font-semibold text-white shadow-sm hover:bg-slate-900">
+                      Procesar / Ver Detalle
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.BO.EXI.02 – Detalle y Resolución -->
+      <section id="bo-exi02" class="bo-exi-panel hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-semibold text-slate-900 mb-1">UI.BO.EXI.02 · Detalle y Resolución de Solicitud</h2>
+            <p class="text-sm text-slate-600">
+              Compare datos, revise la documentación adjunta y tome una decisión de aprobación o rechazo.
+            </p>
+          </div>
+          <button data-go="bo-exi01" class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50">
+            <i class="fas fa-arrow-left mr-2"></i> Volver a Bandeja
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <!-- Sección A: Datos -->
+          <div class="lg:col-span-1 bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3 text-sm">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Datos del Afiliado</p>
+            <div class="space-y-1">
+              <p><span class="font-semibold text-slate-800">Nro Legajo:</span> 123456</p>
+              <p><span class="font-semibold text-slate-800">Apellido y Nombre:</span> Pérez, Juan</p>
+              <p><span class="font-semibold text-slate-800">DNI:</span> 20.123.456</p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 space-y-1">
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Año Solicitado</p>
+              <p class="font-semibold text-slate-900">2023</p>
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-3 mb-1">Estado Matricular</p>
+              <p class="text-sm text-slate-800">Activo / Sin Baja</p>
+            </div>
+          </div>
+
+          <!-- Sección B: Documentos -->
+          <div class="lg:col-span-1 bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3 text-sm">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Documentos Adjuntos</p>
+            <p class="text-xs text-slate-500 mb-2">Debe revisar todos los documentos antes de poder aprobar la solicitud.</p>
+
+            <ul id="bo-doc-list" class="space-y-2">
+              <li class="flex items-center justify-between gap-3 rounded-lg border border-slate-200 px-3 py-2 bg-slate-50">
+                <div class="min-w-0">
+                  <p class="text-sm font-medium text-slate-900 truncate">certificado_trabajo_2023.pdf</p>
+                  <p class="text-xs text-slate-500">Documento principal · Obligatorio</p>
+                </div>
+                <button
+                  class="bo-doc-view inline-flex items-center justify-center rounded-full bg-slate-800 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm hover:bg-slate-900"
+                  data-doc-id="1"
+                >
+                  Ver Documento
+                </button>
+              </li>
+              <li class="flex items-center justify-between gap-3 rounded-lg border border-slate-200 px-3 py-2 bg-white">
+                <div class="min-w-0">
+                  <p class="text-sm font-medium text-slate-900 truncate">recibo_sueldo_enero.pdf</p>
+                  <p class="text-xs text-slate-500">Respaldo adicional · Opcional</p>
+                </div>
+                <button
+                  class="bo-doc-view inline-flex items-center justify-center rounded-full bg-slate-800 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm hover:bg-slate-900"
+                  data-doc-id="2"
+                >
+                  Ver Documento
+                </button>
+              </li>
+            </ul>
+
+            <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-xs text-slate-600">
+              Regla: El botón <span class="font-semibold">[APROBAR]</span> permanece deshabilitado hasta que se haya hecho clic en <span class="font-semibold">“Ver Documento”</span> en todos los adjuntos.
+            </div>
+          </div>
+
+          <!-- Sección C: Resolución -->
+          <div class="lg:col-span-1 bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4 text-sm">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Resolución</p>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Motivo de Rechazo (si aplica)</label>
+              <select id="bo-reject-reason" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                <option value="">Seleccione un motivo...</option>
+                <option value="ilegible">Ilegible</option>
+                <option value="anio">No corresponde año</option>
+                <option value="firma">Falta firma</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Observaciones (opcional)</label>
+              <textarea rows="4" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500" placeholder="Comentario adicional para el afiliado (opcional)..."></textarea>
+            </div>
+
+            <div class="flex flex-col gap-2 pt-3 border-t border-slate-200">
+              <button
+                id="bo-approve-btn"
+                disabled
+                class="inline-flex items-center justify-center rounded-lg bg-emerald-600/40 px-4 py-2.5 text-sm font-semibold text-white shadow-sm cursor-not-allowed"
+              >
+                <i class="fas fa-check mr-2"></i> APROBAR
+              </button>
+              <button
+                id="bo-reject-btn"
+                class="inline-flex items-center justify-center rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-1"
+              >
+                <i class="fas fa-times mr-2"></i> RECHAZAR
+              </button>
+            </div>
+
+            <p class="text-xs text-slate-500">
+              [APROBAR] cambia el estado a <span class="font-semibold">PENDIENTE_PAGO</span> y dispara el CU.07 (Boleta).
+              [RECHAZAR] exige motivo y envía notificación al afiliado.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Tabs internos BO-EXI
+    const boTabs = document.querySelectorAll('.bo-exi-tab-btn');
+    const boPanels = document.querySelectorAll('.bo-exi-panel');
+
+    function showBoTab(id) {
+      boTabs.forEach((b) => {
+        const active = b.getAttribute('data-tab') === id;
+        b.classList.toggle('text-blue-600', active);
+        b.classList.toggle('border-blue-600', active);
+        b.classList.toggle('bg-blue-50/50', active);
+        b.classList.toggle('text-slate-500', !active);
+        b.classList.toggle('border-transparent', !active);
+      });
+      boPanels.forEach((p) => p.classList.toggle('hidden', p.id !== id));
+    }
+
+    boTabs.forEach((btn) => {
+      btn.addEventListener('click', () => showBoTab(btn.getAttribute('data-tab')));
+    });
+
+    // Doble clic / click en fila para ir a detalle
+    document.querySelectorAll('#bo-exi01 tr[data-go]').forEach((row) => {
+      row.addEventListener('dblclick', () => {
+        showBoTab(row.getAttribute('data-go'));
+      });
+    });
+
+    // Botones de navegación explícitos
+    document.querySelectorAll('[data-go="bo-exi02"]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showBoTab('bo-exi02');
+      });
+    });
+    document.querySelectorAll('[data-go="bo-exi01"]').forEach((btn) => {
+      btn.addEventListener('click', () => showBoTab('bo-exi01'));
+    });
+
+    // Lógica de documentos vistos para habilitar APROBAR
+    const docButtons = document.querySelectorAll('.bo-doc-view');
+    const approveBtn = document.getElementById('bo-approve-btn');
+    const seenDocs = new Set();
+
+    function updateApproveState() {
+      const total = docButtons.length;
+      const ok = seenDocs.size === total;
+      if (!approveBtn) return;
+      approveBtn.disabled = !ok;
+      approveBtn.classList.toggle('cursor-not-allowed', !ok);
+      approveBtn.classList.toggle('bg-emerald-600/40', !ok);
+      approveBtn.classList.toggle('bg-emerald-600', ok);
+      approveBtn.classList.toggle('hover:bg-emerald-700', ok);
+      approveBtn.classList.toggle('focus:ring-2', ok);
+      approveBtn.classList.toggle('focus:ring-emerald-500', ok);
+      approveBtn.classList.toggle('focus:ring-offset-1', ok);
+    }
+
+    docButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-doc-id');
+        if (id) seenDocs.add(id);
+        // Simular apertura de visor (solo feedback visual)
+        btn.classList.remove('bg-slate-800', 'hover:bg-slate-900');
+        btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+        btn.innerHTML = '<i class="fas fa-eye mr-1"></i> Visto';
+        updateApproveState();
+      });
+    });
+
+    // Inicial
+    updateApproveState();
+  </script>
+</body>
+</html>
+

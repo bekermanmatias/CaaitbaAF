@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CMAO.02 · Consulta y Notificaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-900">CMAO.02 · Consulta y Notificaciones</h1>
+          <p class="text-sm text-gray-500 mt-1">Cuenta Individual y Buzón de Correo del Afiliado</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 uppercase tracking-wide">Prototipo UI</span>
+          <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 text-xs font-semibold">
+            CMAO
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs superiores -->
+    <nav class="bg-white border-b border-gray-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-wrap gap-1">
+          <button
+            class="cmao-tab-btn px-4 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600 bg-blue-50/50"
+            data-tab="cmao-consulta"
+          >
+            <i class="fas fa-table mr-2"></i>
+            UI.CMAO.CONSULTA · Cuenta Individual
+          </button>
+          <button
+            class="cmao-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300"
+            data-tab="cmao-email"
+          >
+            <i class="fas fa-envelope-open-text mr-2"></i>
+            UI.EMAIL.NOTIF · Buzón de Correo
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenido -->
+    <main class="max-w-6xl mx-auto px-6 py-8 space-y-8">
+      <!-- UI.CMAO.CONSULTA · Cuenta Individual -->
+      <section id="cmao-consulta" class="cmao-tab-panel space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.CMAO.CONSULTA · Cuenta Individual (Autogestión)</h2>
+          <p class="text-sm text-gray-600">
+            Objetivo: Verificar la extinción de la deuda una vez procesada la renuncia al cómputo.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Cuenta Individual del Afiliado</p>
+              <p class="text-xs text-gray-500">
+                Vista resumida por año fiscal. La fila del año con renuncia procesada muestra saldo exigible en $ 0,00.
+              </p>
+            </div>
+            <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1"></span>
+              Renuncia al cómputo aplicada
+            </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 text-sm">
+              <thead class="bg-gray-50">
+                <tr class="text-[11px] font-semibold text-gray-600 uppercase tracking-wide">
+                  <th class="px-4 py-2 text-left">Año</th>
+                  <th class="px-4 py-2 text-right">Aportes Históricos</th>
+                  <th class="px-4 py-2 text-right">Saldo Exigible Antes</th>
+                  <th class="px-4 py-2 text-right">Saldo Exigible Actual</th>
+                  <th class="px-4 py-2 text-left">Estado / Observaciones</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-100">
+                <!-- Año previo con deuda -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 whitespace-nowrap font-semibold text-gray-900">2022</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-gray-800">$ 500.000,00</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-red-700 font-semibold">$ 200.000,00</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-red-700 font-semibold">$ 200.000,00</td>
+                  <td class="px-4 py-2 text-gray-600">DEUDA EXIGIBLE</td>
+                </tr>
+
+                <!-- Año con renuncia aplicada -->
+                <tr class="bg-emerald-50/50 hover:bg-emerald-50">
+                  <td class="px-4 py-2 whitespace-nowrap font-semibold text-gray-900">2023</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-gray-800">$ 650.000,00</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-gray-500 font-medium line-through">$ 150.000,00</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right font-bold text-emerald-700">$ 0,00</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-semibold text-emerald-800 border border-emerald-300">
+                      RENUNCIA AL CÓMPUTO DE APORTES
+                    </span>
+                  </td>
+                </tr>
+
+                <!-- Otro año sin cambios -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 whitespace-nowrap font-semibold text-gray-900">2021</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-gray-800">$ 400.000,00</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-gray-800">$ 0,00</td>
+                  <td class="px-4 py-2 whitespace-nowrap text-right text-gray-800">$ 0,00</td>
+                  <td class="px-4 py-2 text-gray-500">Sin deuda</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.EMAIL.NOTIF · Buzón de Correo del Afiliado -->
+      <section id="cmao-email" class="cmao-tab-panel hidden space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.EMAIL.NOTIF · Buzón de Correo del Afiliado</h2>
+          <p class="text-sm text-gray-600">
+            Objetivo: mostrar la notificación fehaciente (RN6) luego de acreditarse el pago.
+          </p>
+        </div>
+
+        <!-- Simulación de bandeja + detalle de email -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Lista de correos -->
+          <div class="md:col-span-1 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col">
+            <div class="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+              <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Buzón de Entrada</p>
+              <span class="text-[11px] text-gray-500">Afiliado · correo@ejemplo.com</span>
+            </div>
+            <div class="flex-1 divide-y divide-gray-100 text-sm">
+              <button class="w-full text-left px-4 py-3 bg-blue-50 border-l-2 border-blue-500">
+                <p class="text-xs font-semibold text-gray-800 truncate">
+                  Confirmación de Trámite - CAAITBA
+                </p>
+                <p class="text-[11px] text-gray-500 truncate">
+                  Su solicitud de Renuncia al Cómputo para el año 2023 ha sido procesada...
+                </p>
+              </button>
+              <button class="w-full text-left px-4 py-3 hover:bg-gray-50">
+                <p class="text-xs font-semibold text-gray-800 truncate">
+                  Recordatorio de Vencimiento
+                </p>
+                <p class="text-[11px] text-gray-500 truncate">
+                  Le recordamos que posee deudas exigibles en años anteriores...
+                </p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Detalle del email -->
+          <div class="md:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm p-6 space-y-4">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Asunto</p>
+                <p class="text-sm font-semibold text-gray-900">Confirmación de Trámite - CAAITBA</p>
+              </div>
+              <span class="text-xs text-gray-500">01/03/2026 · 10:32 hs</span>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4 space-y-1 text-sm">
+              <p><span class="font-semibold text-gray-700">De:</span> notificaciones@caaitba.org.ar</p>
+              <p><span class="font-semibold text-gray-700">Para:</span> afiliado@ejemplo.com</p>
+            </div>
+
+            <div class="border border-gray-100 rounded-lg p-4 bg-gray-50 text-sm leading-relaxed">
+              <p class="mb-3">
+                Estimado/a <span class="font-semibold">[Nombre]</span>,
+              </p>
+              <p class="mb-3">
+                Le informamos que se ha acreditado el pago de los gastos administrativos.
+              </p>
+              <p class="mb-3">
+                Su solicitud de <span class="font-semibold">Renuncia al Cómputo</span> para el año
+                <span class="font-semibold">[AAAA]</span> ha sido procesada exitosamente.
+              </p>
+              <p class="mb-3">
+                Podrá visualizar el impacto de esta gestión en su Cuenta Individual dentro del portal de autogestión.
+              </p>
+              <p class="text-xs text-gray-500 mt-4">
+                Este mensaje se envía de forma automática. Por favor, no responda a este correo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Tabs internos CMAO.02
+    const cmaoTabButtons = document.querySelectorAll('.cmao-tab-btn');
+    const cmaoPanels = document.querySelectorAll('.cmao-tab-panel');
+
+    cmaoTabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        cmaoTabButtons.forEach((b) => {
+          b.classList.remove('text-blue-600', 'border-blue-600', 'bg-blue-50/50');
+          b.classList.add('text-gray-500', 'border-transparent');
+        });
+        btn.classList.add('text-blue-600', 'border-blue-600', 'bg-blue-50/50');
+        btn.classList.remove('text-gray-500', 'border-transparent');
+
+        cmaoPanels.forEach((panel) => {
+          panel.classList.add('hidden');
+        });
+        const targetEl = document.getElementById(target);
+        if (targetEl) targetEl.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CU-SA.AF.CMAO.03 · Opción de Pago 50%</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-900">CU-SA.AF.CMAO.03 · Opción de Pago 50% CMAO</h1>
+          <p class="text-sm text-gray-500 mt-1">Ingreso de solicitud, términos y estados de excepción</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 uppercase tracking-wide">Prototipo UI</span>
+          <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 text-xs font-semibold">
+            OPT
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="bg-white border-b border-gray-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-wrap gap-1">
+          <button class="opt-tab-btn px-4 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600 bg-blue-50/50" data-tab="opt01">
+            <i class="fas fa-table mr-2"></i>
+            UI.OPT.01 · Selección de Año
+          </button>
+          <button class="opt-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="opt02">
+            <i class="fas fa-file-contract mr-2"></i>
+            UI.OPT.02 · Términos y Condiciones
+          </button>
+          <button class="opt-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="opt03">
+            <i class="fas fa-file-invoice-dollar mr-2"></i>
+            UI.OPT.03 · Estado de Trámite
+          </button>
+          <button class="opt-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="opt04">
+            <i class="fas fa-times-circle mr-2"></i>
+            UI.OPT.04 · Bloqueo Capital &lt; 50%
+          </button>
+          <button class="opt-tab-btn px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="opt05">
+            <i class="fas fa-gavel mr-2"></i>
+            UI.OPT.05 · Bloqueo Abogado
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-8 space-y-8">
+      <!-- UI.OPT.01 – Selección de Año -->
+      <section id="opt01" class="opt-tab-panel space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.OPT.01 · Selección de Año (Grilla Histórica)</h2>
+          <p class="text-sm text-gray-600">
+            Paso 2 y 3 · Mostrar situación histórica desde <span class="font-semibold">2015</span> y permitir seleccionar un año elegible para la Opción de Pago del 50% CMAO.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-900">Histórico de Aportes y Opciones</h3>
+            <p class="text-xs text-gray-500 mt-0.5">Ordenamiento: Año Fiscal Descendente · Años desde 2015 (RN-03). COEF: Verde ≥ 0,5000 / Rojo &lt; 0,5000</p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 text-sm">
+              <thead class="bg-gray-50">
+                <tr class="text-[11px] font-semibold text-gray-600 uppercase tracking-wide">
+                  <th class="px-4 py-2 text-left">Año</th>
+                  <th class="px-4 py-2 text-right">$ Pagado (Capital integrado)</th>
+                  <th class="px-4 py-2 text-right">COEF. (Decimal)</th>
+                  <th class="px-4 py-2 text-right">$ Aportes (Valor CMAO)</th>
+                  <th class="px-4 py-2 text-left">Observaciones (Estado / Bloqueos)</th>
+                  <th class="px-4 py-2 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-100">
+                <!-- Año con coef < 0.5 (semáforo rojo, no apto → OPT.04) -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2018</td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 200.000,00</td>
+                  <td class="px-4 py-2 text-right"><span class="inline-flex items-center justify-center min-w-[4rem] rounded px-2 py-0.5 bg-red-50 text-red-700 font-bold border border-red-200">0,3200</span></td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 350.000,00</td>
+                  <td class="px-4 py-2 text-gray-600">Capital insuficiente (&lt; 0,5000)</td>
+                  <td class="px-4 py-2 text-right text-xs text-gray-400 italic">No apto</td>
+                </tr>
+
+                <!-- Año con juicio (coef ≥ 0.5 pero bloqueado → OPT.05) -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2019</td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 280.000,00</td>
+                  <td class="px-4 py-2 text-right"><span class="inline-flex items-center justify-center min-w-[4rem] rounded px-2 py-0.5 bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">0,5100</span></td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 500.000,00</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-[11px] font-semibold text-purple-700 border border-purple-200">JUDICIAL</span>
+                  </td>
+                  <td class="px-4 py-2 text-right text-xs text-gray-400 italic">No apto</td>
+                </tr>
+
+                <!-- Año con opción ya aceptada -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2020</td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 300.000,00</td>
+                  <td class="px-4 py-2 text-right"><span class="inline-flex items-center justify-center min-w-[4rem] rounded px-2 py-0.5 bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">0,5000</span></td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 550.000,00</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700 border border-emerald-200">OPCIÓN 50% ACEPTADA</span>
+                  </td>
+                  <td class="px-4 py-2 text-right text-xs text-gray-400 italic">Ya gestionado</td>
+                </tr>
+
+                <!-- Año en proceso -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2017</td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 260.000,00</td>
+                  <td class="px-4 py-2 text-right"><span class="inline-flex items-center justify-center min-w-[4rem] rounded px-2 py-0.5 bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">0,5200</span></td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 480.000,00</td>
+                  <td class="px-4 py-2">
+                    <span class="inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700 border border-amber-200">EN PROCESO</span>
+                  </td>
+                  <td class="px-4 py-2 text-right text-xs text-gray-400 italic">En trámite</td>
+                </tr>
+
+                <!-- Año apto: Coef ≥ 0.5 y sin juicio → [Elegir] habilitado -->
+                <tr class="hover:bg-blue-50/60">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2021</td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 320.000,00</td>
+                  <td class="px-4 py-2 text-right"><span class="inline-flex items-center justify-center min-w-[4rem] rounded px-2 py-0.5 bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">0,5400</span></td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 600.000,00</td>
+                  <td class="px-4 py-2 text-gray-600">—</td>
+                  <td class="px-4 py-2 text-right">
+                    <button class="inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Elegir</button>
+                  </td>
+                </tr>
+
+                <!-- Año sin movimientos -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 font-semibold text-gray-900">2022</td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 0,00</td>
+                  <td class="px-4 py-2 text-right"><span class="inline-flex items-center justify-center min-w-[4rem] rounded px-2 py-0.5 bg-red-50 text-red-700 font-bold border border-red-200">0,0000</span></td>
+                  <td class="px-4 py-2 text-right text-gray-800">$ 0,00</td>
+                  <td class="px-4 py-2 text-gray-500">Sin movimientos</td>
+                  <td class="px-4 py-2 text-right text-xs text-gray-400 italic">No apto</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.OPT.02 – Términos y Condiciones -->
+      <section id="opt02" class="opt-tab-panel hidden space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.OPT.02 · Términos y Condiciones (Solicitud)</h2>
+          <p class="text-sm text-gray-600">
+            Paso 7 y 8 · Confirmación de la voluntad de renuncia parcial (Opción 50%).
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6 space-y-6">
+          <!-- Encabezado -->
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900">
+              SOLICITUD DE OPCIÓN DE PAGO DEL 50% - AÑO 2021
+            </h3>
+            <p class="text-xs text-gray-500 mt-1">
+              Verifique los términos legales antes de confirmar. Esta opción afecta el cómputo de sus aportes.
+            </p>
+          </div>
+
+          <!-- Pre-visualización de costos (Mejora UX) -->
+          <div class="rounded-xl border-2 border-gray-200 bg-gray-50 p-4 space-y-2">
+            <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Pre-visualización de costos</p>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-700">Gastos Administrativos:</span>
+              <span class="font-semibold text-gray-900">$ 18.000,00</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-700">Recargos (si aplica):</span>
+              <span class="font-semibold text-red-700">$ 2.500,00</span>
+            </div>
+            <div class="flex justify-between text-base font-bold pt-2 border-t border-gray-200 mt-2">
+              <span class="text-gray-900">Total a Abonar:</span>
+              <span class="text-blue-600">$ 20.500,00</span>
+            </div>
+          </div>
+
+          <!-- Texto Legal (Declaración Jurada) -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Declaración Jurada - Opción 50%</label>
+            <textarea
+              disabled
+              rows="10"
+              class="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-600 resize-none leading-relaxed"
+            >Declaro conocer y aceptar la Opción de Pago del 50% de la Contribución Mensual de Aportes Obligatorios (CMAO) para el año fiscal seleccionado.
+
+Mediante la presente, solicito formalmente que la Caja aplique el régimen de Opción del 50% sobre el capital adeudado, reconociendo que el año quedará computado de acuerdo con las condiciones previstas en la normativa vigente.
+
+Acepto que, en caso de existir diferencias de capital, intereses o gastos administrativos, deberán ser abonadas para la plena eficacia de la presente opción.
+
+Declaro bajo juramento que los datos consignados son veraces y que comprendo los alcances previsionales y económicos de esta solicitud.</textarea>
+          </div>
+
+          <!-- Datos de contacto -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Correo Electrónico <span class="text-red-600">*</span>
+            </label>
+            <input
+              id="opt-email"
+              type="email"
+              value="afiliado@ejemplo.com"
+              class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <p class="mt-1 text-xs text-gray-500">
+              Este correo se utilizará para el envío de la boleta y notificaciones asociadas a la opción de pago del 50%.
+            </p>
+          </div>
+
+          <!-- Control de aceptación (RNF-11: desmarcado por defecto) -->
+          <div class="flex items-start gap-3">
+            <input
+              id="opt-accept"
+              type="checkbox"
+              class="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <label for="opt-accept" class="text-sm text-gray-700 cursor-pointer">
+              Acepto Términos y Condiciones Legales
+            </label>
+          </div>
+          <p class="text-xs text-gray-500">
+            Debe marcar la casilla para habilitar el botón [Confirmar Solicitud].
+          </p>
+
+          <!-- Acciones -->
+          <div class="flex justify-end gap-3 pt-4 border-t border-gray-200">
+            <button
+              class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
+            >
+              Volver
+            </button>
+            <button
+              id="opt-confirm-btn"
+              class="inline-flex items-center justify-center rounded-lg bg-blue-600/40 px-6 py-2.5 text-sm font-semibold text-white shadow-sm cursor-not-allowed"
+              disabled
+            >
+              Confirmar Solicitud
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.OPT.03 – Estado de Trámite (Orden Generada) -->
+      <section id="opt03" class="opt-tab-panel hidden space-y-6">
+        <div class="text-center space-y-3">
+          <h2 class="text-lg font-semibold text-gray-900">UI.OPT.03 · Estado de Trámite (Orden Generada)</h2>
+          <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-6 py-3 border-2 border-red-300">
+            <span class="text-xl font-bold text-red-800">ESTADO: PENDIENTE DE PAGO</span>
+          </div>
+        </div>
+
+        <!-- Advertencia Cero Papel -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-exclamation-triangle text-amber-600 text-xl mt-0.5"></i>
+            <div>
+              <p class="text-sm font-bold text-amber-900 mb-1">IMPORTANTE: NO SE DEBERÁ REMITIR NINGUNA DOCUMENTACIÓN A LA CAJA.</p>
+              <p class="text-sm text-amber-800 leading-relaxed">
+                El trámite se procesará automáticamente al acreditarse el pago.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detalle de costos -->
+        <div class="bg-white rounded-xl border-2 border-gray-300 shadow-md p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900">Detalle de Boleta</h3>
+            <span class="text-xs text-gray-500">Boleta N° 2026-005050</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex justify-between items-center py-2">
+              <span class="text-sm font-medium text-gray-700">Gastos Administrativos:</span>
+              <span class="text-base font-semibold text-gray-900">$ 18.000,00</span>
+            </div>
+
+            <!-- Recargo Res. 850 (si corresponde) -->
+            <div class="flex justify-between items-center py-2 bg-red-50 rounded-lg px-3 border border-red-200">
+              <span class="text-sm font-medium text-red-800">Recargo Res. 850:</span>
+              <span class="text-base font-semibold text-red-800">$ 2.500,00</span>
+            </div>
+
+            <div class="flex justify-between items-center pt-3 border-t-2 border-gray-200 mt-2">
+              <span class="text-lg font-bold text-gray-900">Total a Pagar:</span>
+              <span class="text-2xl font-bold text-blue-600">$ 20.500,00</span>
+            </div>
+          </div>
+
+          <div class="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200 flex items-center gap-3">
+            <i class="fas fa-calendar-alt text-gray-600"></i>
+            <div>
+              <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">Vencimiento</p>
+              <p class="text-sm font-semibold text-gray-900">15/03/2026</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acción principal -->
+        <div class="flex justify-center pt-2">
+          <button
+            class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-offset-2"
+          >
+            <i class="fas fa-download mr-3"></i>
+            DESCARGAR ORDEN DE PAGO
+          </button>
+        </div>
+      </section>
+
+      <!-- UI.OPT.04 – Bloqueo por Capital Insuficiente -->
+      <section id="opt04" class="opt-tab-panel hidden space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.OPT.04 · Bloqueo por Capital Insuficiente (Excepción A1)</h2>
+          <p class="text-sm text-gray-600">
+            Se muestra cuando el usuario elige un año con coeficiente menor a 0.5000.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-red-200 shadow-sm p-6 space-y-5">
+          <div class="flex items-start gap-3">
+            <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+              <i class="fas fa-times-circle text-red-700"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-red-800 uppercase tracking-wide">
+                Bloqueo por Capital Insuficiente (Excepción A1)
+              </p>
+              <p class="text-sm text-gray-700 mt-2">
+                NO cumple con las condiciones. Usted registra un coeficiente de <strong class="text-red-700">0,3200</strong>. Se requiere el 50% (0,5000).
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm">
+            <p class="text-amber-900">
+              Para acceder a la Opción del 50%, primero debe completar el capital mínimo requerido.
+            </p>
+            <a
+              href="#"
+              class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+            >
+              Pagar Diferencia de Capital (Boleta CMAO)
+            </a>
+          </div>
+
+          <div class="pt-3 flex justify-start">
+            <button class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+              Volver
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI.OPT.05 – Bloqueo por Abogado Asignado -->
+      <section id="opt05" class="opt-tab-panel hidden space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900 mb-1">UI.OPT.05 · Bloqueo por Abogado Asignado (Excepción A2)</h2>
+          <p class="text-sm text-gray-600">
+            Se muestra cuando el año seleccionado está en gestión judicial con estudio asignado.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-red-200 shadow-sm p-6 space-y-5">
+          <div class="flex items-start gap-3">
+            <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+              <i class="fas fa-gavel text-red-700"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-red-800 uppercase tracking-wide">
+                CON ABOGADO ASIGNADO
+              </p>
+              <p class="text-sm text-gray-700 mt-1">
+                Este año fiscal se encuentra en gestión judicial. No es posible generar la orden administrativa de Opción 50% desde el portal.
+              </p>
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-2 text-sm">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+              Datos del Estudio Jurídico
+            </p>
+            <p><span class="font-semibold text-gray-800">Nombre:</span> Estudio Jurídico López & Asociados</p>
+            <p><span class="font-semibold text-gray-800">Dirección:</span> Av. Corrientes 2500, Piso 10, CABA</p>
+            <p><span class="font-semibold text-gray-800">Teléfono:</span> (011) 555-0202</p>
+            <p><span class="font-semibold text-gray-800">Email:</span> estudioslopez@ejemplo.com</p>
+          </div>
+
+          <p class="text-sm text-gray-700">
+            Ante cualquier duda, deberá comunicarse directamente con el estudio jurídico para coordinar los pagos o acuerdos que correspondan.
+          </p>
+
+          <div class="pt-3 flex justify-start">
+            <button class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+              Volver
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Tabs internos Opción 50%
+    const optTabButtons = document.querySelectorAll('.opt-tab-btn');
+    const optPanels = document.querySelectorAll('.opt-tab-panel');
+
+    optTabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        optTabButtons.forEach((b) => {
+          b.classList.remove('text-blue-600', 'border-blue-600', 'bg-blue-50/50');
+          b.classList.add('text-gray-500', 'border-transparent');
+        });
+        btn.classList.add('text-blue-600', 'border-blue-600', 'bg-blue-50/50');
+        btn.classList.remove('text-gray-500', 'border-transparent');
+
+        optPanels.forEach((panel) => panel.classList.add('hidden'));
+        const targetEl = document.getElementById(target);
+        if (targetEl) targetEl.classList.remove('hidden');
+      });
+    });
+
+    // Habilitar/deshabilitar botón Confirmar según checkbox
+    const acceptCheckbox = document.getElementById('opt-accept');
+    const confirmBtn = document.getElementById('opt-confirm-btn');
+
+    if (acceptCheckbox && confirmBtn) {
+      acceptCheckbox.addEventListener('change', () => {
+        if (acceptCheckbox.checked) {
+          confirmBtn.disabled = false;
+          confirmBtn.classList.remove('bg-blue-600/40', 'cursor-not-allowed');
+          confirmBtn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'focus:ring-2', 'focus:ring-blue-500', 'focus:ring-offset-1');
+        } else {
+          confirmBtn.disabled = true;
+          confirmBtn.classList.add('bg-blue-600/40', 'cursor-not-allowed');
+          confirmBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'focus:ring-2', 'focus:ring-blue-500', 'focus:ring-offset-1');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+

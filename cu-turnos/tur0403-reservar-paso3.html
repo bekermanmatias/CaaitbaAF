@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Turno reservado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f3f4f6; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-20">
+      <div class="px-4 sm:px-6 py-4 max-w-3xl mx-auto w-full">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-semibold shadow-sm">CA</div>
+            <div>
+              <p class="text-xs font-semibold tracking-wide uppercase text-slate-500">CAAITBA</p>
+              <p class="text-sm font-semibold text-slate-900">Nuevo Turno</p>
+            </div>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 text-right">
+            <p class="text-[11px] text-slate-400 uppercase">Paso</p>
+            <p class="text-xs font-medium text-slate-700">3 de 3</p>
+          </div>
+        </div>
+
+        <!-- Progreso -->
+        <div class="mt-3">
+          <div class="flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-semibold uppercase tracking-wide">Confirmación</span>
+            <span>Paso 3 de 3</span>
+          </div>
+          <div class="mt-2 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
+            <div class="h-full w-full bg-emerald-600 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 px-4 sm:px-6 py-10 max-w-3xl mx-auto w-full">
+      <div class="text-center">
+        <div class="mx-auto w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center">
+          <i class="fa-solid fa-check text-emerald-700 text-2xl"></i>
+        </div>
+        <h1 class="mt-4 text-xl sm:text-2xl font-semibold text-slate-900">¡Turno reservado con éxito!</h1>
+        <p class="mt-2 text-sm text-slate-600">Ya podés descargar tu comprobante o volver a tu panel.</p>
+      </div>
+
+      <!-- Tarjeta resumen -->
+      <section class="mt-6 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-4 sm:px-6 py-5 flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-stretch">
+          <div class="flex-1 w-full">
+            <div class="flex items-center gap-2 text-xs text-slate-500">
+              <i class="fa-solid fa-receipt text-emerald-600"></i>
+              <span class="uppercase tracking-wide font-semibold">Resumen</span>
+            </div>
+            <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Código reserva</p>
+                <p class="mt-1 font-semibold text-slate-900">T-9921</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Afiliado</p>
+                <p class="mt-1 font-semibold text-slate-900">Juan Pérez</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Cuándo</p>
+                <p class="mt-1 font-semibold text-slate-900">Jueves 25 de enero · 10:30 hs</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold">Dónde</p>
+                <p class="mt-1 font-semibold text-slate-900">La Plata · Calle 50 1234</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full sm:w-44 flex flex-col items-center justify-center flex-shrink-0">
+            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-xl border-2 border-slate-200 bg-white flex items-center justify-center">
+              <div class="w-20 h-20 sm:w-24 sm:h-24 bg-[radial-gradient(circle,_#111_1px,_transparent_1px)] [background-size:4px_4px] rounded-lg"></div>
+            </div>
+            <p class="mt-2 text-[11px] text-slate-500 text-center max-w-[9rem]">QR de acceso</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Acciones finales -->
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-end">
+        <button type="button" class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 inline-flex items-center justify-center gap-2">
+          <i class="fa-solid fa-file-arrow-down text-blue-600"></i>
+          Descargar comprobante
+        </button>
+        <button type="button" class="rounded-xl bg-blue-600 text-white px-4 py-3 text-sm font-semibold shadow-sm hover:bg-blue-700 inline-flex items-center justify-center gap-2">
+          Volver a Mis Turnos
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

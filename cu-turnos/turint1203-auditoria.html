@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registro de Auditoría del Turno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-200/80 min-h-screen flex items-center justify-center p-4">
+  <!-- Modal secundario (drill-down) -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-xl max-w-4xl w-full overflow-hidden">
+    <div class="px-5 py-4 border-b border-slate-200 bg-slate-50">
+      <h2 class="text-base font-semibold text-slate-900 flex items-center gap-2">
+        <i class="fa-solid fa-file-lines text-indigo-600"></i>
+        Registro de Auditoría del Turno
+      </h2>
+      <div class="mt-2 flex flex-wrap gap-4 text-xs text-slate-600">
+        <span><strong>Turno Ref.:</strong> TUR-8854</span>
+        <span><strong>Afiliado:</strong> Juan Pérez</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <h3 class="text-sm font-semibold text-slate-800 mb-3">Historial de Cambios y Eventos</h3>
+      <p class="text-[11px] text-slate-500 mb-3">Ordenamiento: Fecha y Hora Descendente (lo último ocurrido arriba)</p>
+      <div class="overflow-auto max-h-[400px]">
+        <table class="w-full text-sm min-w-[700px]">
+          <thead class="bg-slate-50 text-[11px] uppercase text-slate-500 tracking-wide sticky top-0">
+            <tr>
+              <th class="px-3 py-2 text-left font-semibold w-10">#</th>
+              <th class="px-3 py-2 text-left font-semibold">Fecha / Hora</th>
+              <th class="px-3 py-2 text-left font-semibold">Usuario / Actor</th>
+              <th class="px-3 py-2 text-left font-semibold">Evento / Acción</th>
+              <th class="px-3 py-2 text-left font-semibold">Estado Resultante</th>
+              <th class="px-3 py-2 text-left font-semibold">Detalle / Observación</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 text-xs">
+            <tr class="hover:bg-slate-50">
+              <td class="px-3 py-2 font-medium">1</td>
+              <td class="px-3 py-2 font-mono">10/02/2026 10:05</td>
+              <td class="px-3 py-2"><span class="inline-flex rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 text-xs font-medium">oper_gomez</span></td>
+              <td class="px-3 py-2">Registro de Llegada</td>
+              <td class="px-3 py-2"><span class="inline-flex rounded-full bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 font-medium">En Espera</span></td>
+              <td class="px-3 py-2 text-slate-600">Ingreso por Mesa de Entradas.</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-3 py-2 font-medium">2</td>
+              <td class="px-3 py-2 font-mono">05/02/2026 14:22</td>
+              <td class="px-3 py-2"><span class="inline-flex rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 text-xs font-medium">afiliado_web</span></td>
+              <td class="px-3 py-2">Alta Reserva</td>
+              <td class="px-3 py-2"><span class="inline-flex rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 font-medium">Reservado</span></td>
+              <td class="px-3 py-2 text-slate-600">Alta desde Autogestión.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="px-5 py-4 border-t border-slate-200 bg-slate-50 flex flex-wrap gap-3 justify-end">
+      <button type="button" class="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 inline-flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i>
+        Volver
+      </button>
+    </div>
+  </div>
+</body>
+</html>

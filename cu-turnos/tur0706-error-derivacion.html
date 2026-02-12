@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Error / Derivación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+    .kiosk-btn { min-height: 72px; font-size: 1.5rem; padding: 1rem 2rem; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col">
+  <div class="flex-1 flex flex-col items-center justify-center px-6 py-8 text-center">
+    <i class="fa-solid fa-circle-exclamation text-6xl sm:text-7xl text-amber-500 mb-6"></i>
+    <p class="text-2xl sm:text-3xl font-semibold text-slate-800 mb-4">
+      No pudimos registrar tu llegada.
+    </p>
+    <p class="text-xl text-slate-600 max-w-md mb-10">
+      Por favor, acércate a la <strong>Mesa de Entradas</strong> para que un operador te asista.
+    </p>
+    <button type="button" id="btn-entendido" class="kiosk-btn rounded-2xl bg-slate-700 text-white font-semibold shadow-lg hover:bg-slate-800 active:scale-[0.98] px-10">
+      Entendido
+    </button>
+    <p class="text-sm text-slate-400 mt-6">Volver al inicio en <span id="segundos">5</span> s</p>
+  </div>
+  <script>
+    (function () {
+      var restante = 5;
+      var segundosEl = document.getElementById('segundos');
+      var idTimer = setInterval(function () {
+        restante--;
+        segundosEl.textContent = restante;
+        if (restante <= 0) {
+          clearInterval(idTimer);
+          if (window.parent !== window) window.parent.postMessage({ tipo: 'volver' }, '*');
+          else window.history.back();
+        }
+      }, 1000);
+      document.getElementById('btn-entendido').addEventListener('click', function () {
+        clearInterval(idTimer);
+        if (window.parent !== window) window.parent.postMessage({ tipo: 'volver' }, '*');
+        else window.history.back();
+      });
+    })();
+  </script>
+</body>
+</html>

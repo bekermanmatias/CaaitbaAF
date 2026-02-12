@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>UI.EXI.03 · Detalle de Solicitud (Post Aprobación)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-900">UI.EXI.03 · Detalle de Solicitud (Vista Afiliado)</h1>
+          <p class="text-sm text-gray-500 mt-1">Estado Post Aprobación · Evidencia de Impacto del CU.07</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 uppercase tracking-wide">Vista Afiliado</span>
+          <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 text-xs font-semibold">
+            EXI3
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-8 space-y-6">
+      <!-- Estado del Trámite (Cambio visual) -->
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Estado del Trámite</p>
+            <p class="text-sm text-gray-600">
+              Solicitud de Eximición CMAO · Año Fiscal: <span class="font-semibold text-gray-900">2023</span>
+            </p>
+          </div>
+          <div class="inline-flex items-center rounded-full bg-emerald-100 px-5 py-2.5 border-2 border-emerald-300">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2"></span>
+            <span class="text-base font-bold text-emerald-800">APROBADA - PENDIENTE DE PAGO</span>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <p class="text-xs text-gray-500">
+            <span class="font-semibold">Nota:</span> Tras la ejecución del CU.07, la barra de estado cambió de
+            <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 border border-amber-200 text-amber-800 text-[11px]">
+              "En Revisión"
+            </span>
+            a
+            <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 border border-emerald-200 text-emerald-800 text-[11px]">
+              "APROBADA - PENDIENTE DE PAGO"
+            </span>
+            .
+          </p>
+        </div>
+      </div>
+
+      <!-- Nueva Sección: Gastos Administrativos (Ahora visible) -->
+      <div class="bg-white rounded-xl border-2 border-gray-300 shadow-md p-6 space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">Gastos Administrativos</h3>
+          <span class="text-xs text-gray-500">Boleta N° 2026-EXI-001234</span>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex justify-between items-center py-2">
+            <span class="text-sm font-medium text-gray-700">Concepto Deuda:</span>
+            <span class="text-sm font-semibold text-gray-900">Gastos Admin. Eximición 2023</span>
+          </div>
+
+          <div class="flex justify-between items-center py-2 border-t border-gray-100">
+            <span class="text-base font-semibold text-gray-900">Monto a Pagar:</span>
+            <span class="text-2xl font-bold text-blue-600">$ 12.500,00</span>
+          </div>
+        </div>
+
+        <!-- Fecha de Vencimiento -->
+        <div class="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200 flex items-center gap-3">
+          <i class="fas fa-calendar-alt text-gray-600"></i>
+          <div>
+            <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">Fecha Vencimiento</p>
+            <p class="text-sm font-semibold text-gray-900">20/04/2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones Principales -->
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">Acciones Disponibles</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <!-- Descargar Boleta -->
+          <button
+            class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+          >
+            <i class="fas fa-download mr-2"></i>
+            Descargar Boleta
+          </button>
+
+          <!-- Pagar Online -->
+          <button
+            class="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1"
+          >
+            <i class="fas fa-credit-card mr-2"></i>
+            Pagar Online
+          </button>
+
+          <!-- Cancelar Solicitud -->
+          <button
+            class="inline-flex items-center justify-center rounded-lg border border-red-300 bg-white px-6 py-3 text-sm font-semibold text-red-700 shadow-sm hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-1"
+          >
+            <i class="fas fa-times-circle mr-2"></i>
+            Cancelar Solicitud
+          </button>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-200 space-y-2 text-xs text-gray-500">
+          <p>
+            <span class="font-semibold">[Descargar Boleta]:</span> Descarga el PDF generado con el código de barras para pago presencial.
+            Visible solo si id_boleta_gastos IS NOT NULL.
+          </p>
+          <p>
+            <span class="font-semibold">[Pagar Online]:</span> Redirige a la pasarela de pagos (Botón de Pago) para abonar con tarjeta.
+            Visible solo si estado_pago = 'PENDIENTE'.
+          </p>
+          <p>
+            <span class="font-semibold">[Cancelar Solicitud]:</span> Permite al afiliado desistir antes de pagar (Anula la deuda generada).
+            Visible mientras no se haya acreditado el pago.
+          </p>
+        </div>
+      </div>
+
+      <!-- Información Adicional -->
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-info-circle text-blue-600 mt-0.5"></i>
+          <div>
+            <p class="font-semibold mb-1">Información Importante</p>
+            <p>
+              Una vez que el Área de Beneficios aprobó su solicitud, se generó automáticamente la boleta de gastos administrativos.
+              Debe abonar esta boleta para completar el trámite de eximición.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

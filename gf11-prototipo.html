@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAAITBA · Grupo Familiar (Prototipo)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Inter", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-900">
+  <div class="min-h-screen flex flex-col items-center py-10 px-4">
+    <!-- Encabezado -->
+    <header class="w-full max-w-6xl mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-12 w-12 rounded-xl bg-blue-700 text-white flex items-center justify-center font-semibold shadow-sm">
+          CA
+        </div>
+        <div>
+          <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500">CAAITBA</p>
+          <p class="text-lg font-semibold text-gray-900">Gestión de Grupo Familiar</p>
+        </div>
+      </div>
+      <div class="flex flex-col items-end gap-1"></div>
+    </header>
+
+    <main class="w-full max-w-6xl space-y-6">
+      <!-- 11.1 Pantalla Principal: Grilla Grupo Familiar -->
+      <section class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 space-y-6">
+        <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h1 class="text-2xl font-semibold text-gray-900">Grupo Familiar · Integrantes Activos</h1>
+            <p class="mt-1 text-sm text-gray-600 max-w-2xl">
+              Consulta y administración de los integrantes del grupo familiar del afiliado. Desde aquí podés agregar nuevos familiares,
+              actualizar datos o dar de baja integrantes.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 justify-end">
+            <button
+              type="button"
+              id="btn-ver-historico"
+              class="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs md:text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+            >
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-500 text-xs">H</span>
+              Ver Histórico
+            </button>
+            <button
+              type="button"
+              id="btn-agregar-familiar"
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-xs md:text-sm font-semibold text-white shadow-sm hover:bg-blue-800"
+            >
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-lg leading-none">+</span>
+              Agregar Familiar
+            </button>
+          </div>
+        </div>
+
+        <!-- Ficha del Afiliado (opcional contextual) -->
+        <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-semibold">
+              AP
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">Pérez, Ana</p>
+              <p class="text-gray-500">
+                N° Afiliado: <span class="font-mono">123456</span> · DNI: 23.456.789 · Estado: <span class="text-emerald-700 font-semibold">Activo</span>
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] text-gray-500">
+            <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-1 text-emerald-700 font-medium">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Grupo Familiar Vigente
+            </span>
+            <span>Última actualización: 12/02/2026 14:32 hs</span>
+          </div>
+        </div>
+
+        <!-- Grilla de Integrantes Activos -->
+        <div class="rounded-xl border border-gray-200 overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200 text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Vínculo</th>
+                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Apellido y Nombre</th>
+                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Documento</th>
+                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Fecha de Alta</th>
+                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 bg-white">
+              <!-- Ejemplo 1 -->
+              <tr>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-800">Cónyuge</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">Pérez, Juan</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">DNI · 23.456.789</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">10/03/2024</td>
+                <td class="px-4 py-3 text-center">
+                  <div class="inline-flex items-center gap-2">
+                    <button
+                      type="button"
+                      class="btn-modificar inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+                    >
+                      Modificar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-baja inline-flex items-center justify-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-100"
+                    >
+                      Dar de Baja
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Ejemplo 2 -->
+              <tr>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-800">Hijo</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">Pérez, Sofía</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">DNI · 45.678.901</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">05/01/2023</td>
+                <td class="px-4 py-3 text-center">
+                  <div class="inline-flex items-center gap-2">
+                    <button
+                      type="button"
+                      class="btn-modificar inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+                    >
+                      Modificar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-baja inline-flex items-center justify-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-100"
+                    >
+                      Dar de Baja
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal 11.2: Agregar Familiar – Paso 1 (Búsqueda y Validación) -->
+  <div
+    id="modal-paso1"
+    class="fixed inset-0 z-40 hidden items-center justify-center bg-black/40 px-4"
+    aria-hidden="true"
+  >
+    <div class="w-full max-w-xl rounded-2xl bg-white shadow-2xl border border-gray-200">
+      <div class="flex items-center justify-between border-b border-gray-200 px-5 py-3">
+        <div>
+          <p class="text-sm font-semibold text-gray-900">Agregar Familiar · Paso 1 de 2</p>
+        </div>
+        <button
+          type="button"
+          class="btn-close text-gray-400 hover:text-gray-600 rounded-full p-1"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="px-5 py-4 space-y-5 text-sm">
+        <div class="grid grid-cols-1 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-gray-700 mb-1">Vínculo <span class="text-red-500">*</span></label>
+            <select
+              id="vinculo-input"
+              class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+            >
+              <option value="">Seleccione una opción...</option>
+              <option value="conyuge">Cónyuge</option>
+              <option value="hijo">Hijo/a</option>
+              <option value="conviviente">Conviviente</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Tipo de Documento <span class="text-red-500">*</span></label>
+              <select
+                id="tipo-doc-input"
+                class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+              >
+                <option value="">Seleccione...</option>
+                <option value="dni">DNI</option>
+                <option value="le">Libreta de Enrolamiento</option>
+                <option value="lc">Libreta Cívica</option>
+                <option value="pasaporte">Pasaporte</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Número de Documento <span class="text-red-500">*</span></label>
+              <input
+                id="nro-doc-input"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                placeholder="Solo números"
+                class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between border-t border-gray-200 px-5 py-3 text-xs">
+        <p class="text-gray-500">Paso 1 de 2</p>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            class="btn-close rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            id="btn-siguiente-paso1"
+            class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-800"
+          >
+            <span id="btn-siguiente-text">Siguiente</span>
+            <span
+              id="btn-siguiente-spinner"
+              class="hidden h-4 w-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 11.3: Agregar / Modificar Familiar – Paso 2 -->
+  <div
+    id="modal-paso2"
+    class="fixed inset-0 z-40 hidden items-center justify-center bg-black/40 px-4"
+    aria-hidden="true"
+  >
+    <div class="w-full max-w-3xl rounded-2xl bg-white shadow-2xl border border-gray-200 max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-gray-200 px-5 py-3">
+        <div>
+          <p class="text-sm font-semibold text-gray-900">
+            Agregar / Modificar Familiar · Paso 2 de 2
+          </p>
+        </div>
+        <button
+          type="button"
+          class="btn-close text-gray-400 hover:text-gray-600 rounded-full p-1"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-5 py-4 space-y-5 text-sm">
+        <!-- Bloque 1: Datos Personales -->
+        <div class="rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="text-sm font-semibold text-gray-800">Datos Personales</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">
+                Nombre <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="nombre-input"
+                type="text"
+                class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                placeholder="Nombre"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">
+                Apellido <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="apellido-input"
+                type="text"
+                class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                placeholder="Apellido"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">
+                Fecha de Nacimiento <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+              />
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-700 mb-1">
+                  Género <span class="text-red-500">*</span>
+                </label>
+                <select
+                  class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                >
+                  <option value="">Seleccione...</option>
+                  <option value="f">Femenino</option>
+                  <option value="m">Masculino</option>
+                  <option value="x">X / No binario</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-700 mb-1">
+                  Estado Civil <span class="text-red-500">*</span>
+                </label>
+                <select
+                  class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+                >
+                  <option value="">Seleccione...</option>
+                  <option value="soltero">Soltero/a</option>
+                  <option value="casado">Casado/a</option>
+                  <option value="divorciado">Divorciado/a</option>
+                  <option value="viudo">Viudo/a</option>
+                  <option value="conviviente">Conviviente</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque 2: Documentación -->
+        <div class="rounded-xl border border-gray-200 bg-white p-4 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="text-sm font-semibold text-gray-800">Documentación del Vínculo</p>
+            <p id="texto-requerido" class="text-[11px] text-gray-500">
+              Requerido: <span class="font-semibold">[Documento según Vínculo]</span>
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="md:col-span-2 rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-4 flex flex-col gap-3 text-sm text-gray-600">
+              <div class="flex items-center justify-between">
+                <p class="font-semibold text-gray-800">Adjuntar Documentación de Vínculo</p>
+                <span class="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded-full font-semibold">Obligatorio</span>
+              </div>
+              <div class="flex-1 rounded-lg border border-gray-200 bg-white p-4 text-center flex flex-col items-center justify-center gap-2">
+                <p class="text-xs text-gray-500">
+                  Arrastrá tu archivo aquí o hacé click para seleccionar
+                </p>
+                <p class="text-[11px] text-gray-400">Formatos permitidos: PDF / JPG · Tamaño máximo sugerido: 10 MB</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs text-gray-600">
+              <div class="rounded-lg bg-gray-50 border border-gray-200 p-3">
+                <p class="font-semibold text-gray-800 mb-1">Ejemplos por vínculo</p>
+                <ul class="list-disc list-inside space-y-1 text-[11px]">
+                  <li>Cónyuge: Partida de matrimonio / Unión convivencial.</li>
+                  <li>Hijo/a: Partida de nacimiento.</li>
+                  <li>Conviviente: Declaración jurada + documentación respaldatoria.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between border-t border-gray-200 px-5 py-3 text-xs">
+        <p class="text-gray-500">Paso 2 de 2</p>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="btn-volver-paso1"
+            class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50"
+          >
+            Volver
+          </button>
+          <button
+            type="button"
+            id="btn-finalizar-guardar"
+            class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700"
+          >
+            <span>Finalizar y Guardar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Básico: Dar de Baja -->
+  <div
+    id="modal-baja"
+    class="fixed inset-0 z-40 hidden items-center justify-center bg-black/40 px-4"
+    aria-hidden="true"
+  >
+    <div class="w-full max-w-md rounded-2xl bg-white shadow-2xl border border-gray-200">
+      <div class="flex items-center justify-between border-b border-gray-200 px-5 py-3">
+        <p class="text-sm font-semibold text-gray-900">Dar de Baja Integrante</p>
+        <button
+          type="button"
+          class="btn-close text-gray-400 hover:text-gray-600 rounded-full p-1"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="px-5 py-4 space-y-3 text-sm">
+        <p class="text-gray-600">
+          Indicá el motivo de baja del integrante seleccionado. La fecha se completará automáticamente con la fecha y hora actual.
+        </p>
+        <div>
+          <label class="block text-xs font-medium text-gray-700 mb-1">Motivo de Baja <span class="text-red-500">*</span></label>
+          <textarea
+            id="motivo-baja-input"
+            rows="3"
+            class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+            placeholder="Ej: Mayor de 25 años sin discapacidad, cambio de obra social, fallecimiento, etc."
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end border-t border-gray-200 px-5 py-3 text-xs">
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            class="btn-close rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-red-700"
+          >
+            Confirmar Baja
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Histórico -->
+  <div
+    id="modal-historico"
+    class="fixed inset-0 z-40 hidden items-center justify-center bg-black/40 px-4"
+    aria-hidden="true"
+  >
+    <div class="w-full max-w-4xl rounded-2xl bg-white shadow-2xl border border-gray-200 max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-gray-200 px-5 py-3">
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Histórico de Integrantes</p>
+          <p class="text-sm font-semibold text-gray-900">Registros dados de baja</p>
+        </div>
+        <button
+          type="button"
+          class="btn-close text-gray-400 hover:text-gray-600 rounded-full p-1"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-5 py-4">
+        <div class="rounded-xl border border-gray-200 overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200 text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Vínculo</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Apellido y Nombre</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Documento</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Fecha de Alta</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Fecha de Baja</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Motivo de Baja</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 bg-white">
+              <tr>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-800">Hijo</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">Pérez, Martín</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">DNI · 40.123.456</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">01/01/2018</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-900">01/02/2025</td>
+                <td class="px-4 py-3 text-xs md:text-sm text-gray-700">
+                  Mayor de 25 años sin discapacidad.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end border-t border-gray-200 px-5 py-3 text-xs">
+        <button
+          type="button"
+          class="btn-close rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+
+      const modalPaso1 = document.getElementById('modal-paso1');
+      const modalPaso2 = document.getElementById('modal-paso2');
+      const modalBaja = document.getElementById('modal-baja');
+      const modalHistorico = document.getElementById('modal-historico');
+
+      const btnAgregarFamiliar = document.getElementById('btn-agregar-familiar');
+      const btnVerHistorico = document.getElementById('btn-ver-historico');
+      const btnVolverPaso1 = document.getElementById('btn-volver-paso1');
+      const btnFinalizarGuardar = document.getElementById('btn-finalizar-guardar');
+
+      const btnSiguientePaso1 = document.getElementById('btn-siguiente-paso1');
+      const btnSiguienteText = document.getElementById('btn-siguiente-text');
+      const btnSiguienteSpinner = document.getElementById('btn-siguiente-spinner');
+
+      const inputNombre = document.getElementById('nombre-input');
+      const inputApellido = document.getElementById('apellido-input');
+      const textoRequerido = document.getElementById('texto-requerido');
+      const selectVinculoModal = document.getElementById('vinculo-input');
+
+      const motivoBajaInput = document.getElementById('motivo-baja-input');
+
+      const modificarButtons = document.querySelectorAll('.btn-modificar');
+      const bajaButtons = document.querySelectorAll('.btn-baja');
+      const closeButtons = document.querySelectorAll('.btn-close');
+
+      function openModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        body.classList.add('overflow-hidden');
+      }
+
+      function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        if (
+          modalPaso1.classList.contains('hidden') &&
+          modalPaso2.classList.contains('hidden') &&
+          modalBaja.classList.contains('hidden') &&
+          modalHistorico.classList.contains('hidden')
+        ) {
+          body.classList.remove('overflow-hidden');
+        }
+      }
+
+      if (btnAgregarFamiliar) {
+        btnAgregarFamiliar.addEventListener('click', function () {
+          openModal(modalPaso1);
+        });
+      }
+
+      if (btnVerHistorico) {
+        btnVerHistorico.addEventListener('click', function () {
+          openModal(modalHistorico);
+        });
+      }
+
+      modificarButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (inputNombre) inputNombre.value = 'Juan';
+          if (inputApellido) inputApellido.value = 'Pérez';
+          openModal(modalPaso2);
+        });
+      });
+
+      bajaButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (motivoBajaInput) motivoBajaInput.value = '';
+          openModal(modalBaja);
+        });
+      });
+
+      if (btnVolverPaso1) {
+        btnVolverPaso1.addEventListener('click', function () {
+          closeModal(modalPaso2);
+          openModal(modalPaso1);
+        });
+      }
+
+      if (btnFinalizarGuardar) {
+        btnFinalizarGuardar.addEventListener('click', function () {
+          closeModal(modalPaso2);
+        });
+      }
+
+      if (btnSiguientePaso1) {
+        btnSiguientePaso1.addEventListener('click', function () {
+          btnSiguientePaso1.disabled = true;
+          btnSiguienteText.textContent = 'Buscando...';
+          btnSiguienteSpinner.classList.remove('hidden');
+
+          setTimeout(function () {
+            btnSiguientePaso1.disabled = false;
+            btnSiguienteText.textContent = 'Siguiente';
+            btnSiguienteSpinner.classList.add('hidden');
+
+            closeModal(modalPaso1);
+            openModal(modalPaso2);
+          }, 1800);
+        });
+      }
+
+      if (selectVinculoModal && textoRequerido) {
+        selectVinculoModal.addEventListener('change', function () {
+          var label = '[Documento según Vínculo]';
+          var v = selectVinculoModal.value;
+          if (v === 'conyuge') label = 'Partida de matrimonio / Unión convivencial';
+          if (v === 'hijo') label = 'Partida de nacimiento';
+          if (v === 'conviviente') label = 'Declaración jurada + respaldo';
+          textoRequerido.innerHTML = 'Requerido: <span class="font-semibold">' + label + '</span>';
+        });
+      }
+
+      closeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var parentModal = btn.closest('#modal-paso1, #modal-paso2, #modal-baja, #modal-historico');
+          if (parentModal) {
+            closeModal(parentModal);
+          }
+        });
+      });
+
+      [modalPaso1, modalPaso2, modalBaja, modalHistorico].forEach(function (modal) {
+        if (!modal) return;
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) {
+            closeModal(modal);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+
